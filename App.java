@@ -14,12 +14,13 @@ public class App{
             System.out.println("3: Display Empty Tables");
             System.out.println("4: Assign New Customer");
             System.out.println("5: Create Order");
-            System.out.println("6: View/Edit/Remove Order");
-            System.out.println("7: Create Reservation Booking");
-            System.out.println("8: Check/Remove Reservation Booking");
-            System.out.println("9: Make Payment / Print Order Invoice");
-            System.out.println("10: Print Sales Revenue Report");
-            System.out.println("11: Terminate the Programme");
+            System.out.println("6: View/Edit Order");
+            System.out.println("7: Edit Order");
+            System.out.println("8: Create Reservation Booking");
+            System.out.println("9: Check/Remove Reservation Booking");
+            System.out.println("10: Make Payment / Print Order Invoice");
+            System.out.println("11: Print Sales Revenue Report");
+            System.out.println("12: Terminate the Programme");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -42,20 +43,22 @@ public class App{
                     restaurant.getOrderManager().viewOrder(restaurant.getTableManager());
                     break;
                 case 7:
+                    restaurant.getOrderManager().editOrder(restaurant.getTableManager(), restaurant.getMenu());
                     break;
                 case 8:
                     break;
-
                 case 9:
-                    restaurant.getBillManager().generateBill(restaurant.getTableManager());
                     break;
                 case 10:
+                    restaurant.getBillManager().generateBill(restaurant.getTableManager());
+                    break;
+                case 11:
                     break;
 
-                case 11: System.out.println("Program terminating...");
+                case 12: System.out.println("Program terminating...");
             }
 
-        }while (choice < 11);
+        }while (choice < 12);
 
     }
 }

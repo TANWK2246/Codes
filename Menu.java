@@ -8,7 +8,7 @@ public class Menu {
 	public Menu(){
 		this.menuItems.add(new AlaCarteItem("Chicken Chop", "chicken", 12.50, ItemType.MainCourse));noOfAlaCarteItems++;
 		this.menuItems.add(new AlaCarteItem("Fish and Chips", "fish & potato", 12.50, ItemType.MainCourse));noOfAlaCarteItems++;
-		this.menuItems.add(new AlaCarteItem("Orang Juice", "orange", 8.00, ItemType.Drinks));noOfAlaCarteItems++;
+		this.menuItems.add(new AlaCarteItem("Orange Juice", "orange", 8.00, ItemType.Drinks));noOfAlaCarteItems++;
 		this.menuItems.add(new AlaCarteItem("French Fries", "potato", 10.00, ItemType.SideDish));noOfAlaCarteItems++;
 		this.menuItems.add(new AlaCarteItem("Lava cake", "chocolate", 10.00, ItemType.Dessert));noOfAlaCarteItems++;
 

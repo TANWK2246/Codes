@@ -6,9 +6,6 @@ public class Order {
 	private LocalDateTime createdAt;
 	private ArrayList<ItemOrder> itemOrder = new ArrayList<ItemOrder>();
 	private Staff created_by;
-
-	
-
 	private Customer customer;
 
 	public Order(Staff staff, Customer customer){
@@ -21,9 +18,19 @@ public class Order {
 		this.itemOrder.add(itemOrder);
 	}
 
+	public void removeItemOrder(int itemID){
+		this.itemOrder.remove(itemID);
+	}
+
+	public void editQuantityofItemOrder(int itemID, int quantity){
+		this.itemOrder.get(itemID).setQuantity(quantity);
+	}
+
 	public void printOrder(){
+		int counter = 0;
 		for(ItemOrder i : itemOrder){
-			System.out.println(i.getItem().getName() + "\t" + i.getQuantity());
+			System.out.println(counter + "\t" + i.getItem().getName() + "\t" + i.getQuantity());
+			counter++;
 		}
 	}
 

@@ -2,32 +2,32 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-	private ArrayList<AlaCarteItem> alaCarteItems = new ArrayList<AlaCarteItem>();
-	private ArrayList<SetPackage> setPackageItems = new ArrayList<SetPackage>();
+	private ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+	private int noOfAlaCarteItems = 0;
 
 	public Menu(){
-		this.alaCarteItems.add(new AlaCarteItem("Chicken Chop", "chicken", 12.50, ItemType.MainCourse));
-		this.alaCarteItems.add(new AlaCarteItem("Fish and Chips", "fish & potato", 12.50, ItemType.MainCourse));
-		this.alaCarteItems.add(new AlaCarteItem("Orang Juice", "orange", 8.00, ItemType.Drinks));
-		this.alaCarteItems.add(new AlaCarteItem("French Fries", "potato", 10.00, ItemType.SideDish));
-		this.alaCarteItems.add(new AlaCarteItem("Lava cake", "chocolate", 10.00, ItemType.Dessert));
+		this.menuItems.add(new AlaCarteItem("Chicken Chop", "chicken", 12.50, ItemType.MainCourse));noOfAlaCarteItems++;
+		this.menuItems.add(new AlaCarteItem("Fish and Chips", "fish & potato", 12.50, ItemType.MainCourse));noOfAlaCarteItems++;
+		this.menuItems.add(new AlaCarteItem("Orang Juice", "orange", 8.00, ItemType.Drinks));noOfAlaCarteItems++;
+		this.menuItems.add(new AlaCarteItem("French Fries", "potato", 10.00, ItemType.SideDish));noOfAlaCarteItems++;
+		this.menuItems.add(new AlaCarteItem("Lava cake", "chocolate", 10.00, ItemType.Dessert));noOfAlaCarteItems++;
 
 		SetPackage newSetPackage = new SetPackage("Lunch Set for One", "lunch for one pax", 25.00);
-		newSetPackage.addItem(this.alaCarteItems.get(0));
-		newSetPackage.addItem(this.alaCarteItems.get(2));
-		newSetPackage.addItem(this.alaCarteItems.get(3));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(0));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(2));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(3));
 
-		this.setPackageItems.add(newSetPackage);
+		this.menuItems.add(newSetPackage);
 
 		newSetPackage = new SetPackage("Lunch Set for Two", "lunch for two pax", 45.00);
-		newSetPackage.addItem(this.alaCarteItems.get(0));
-		newSetPackage.addItem(this.alaCarteItems.get(0));
-		newSetPackage.addItem(this.alaCarteItems.get(2));
-		newSetPackage.addItem(this.alaCarteItems.get(2));
-		newSetPackage.addItem(this.alaCarteItems.get(3));
-		newSetPackage.addItem(this.alaCarteItems.get(3));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(0));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(0));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(2));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(2));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(3));
+		newSetPackage.addItem((AlaCarteItem) this.menuItems.get(3));
 
-		this.setPackageItems.add(newSetPackage);
+		this.menuItems.add(newSetPackage);
 	}
 
 	public void displayMenu() {
@@ -39,29 +39,26 @@ public class Menu {
 
 	public void displayAlaCarteMenu(){
 		int counter = 0;
-		for (AlaCarteItem i : alaCarteItems) {
+		while(counter < noOfAlaCarteItems){
 			System.out.printf("%d\t", counter);
-			i.displayMenuItem();
+			this.menuItems.get(counter).displayMenuItem();
 			counter++;
 		}
 	}
 
 	public void displaySetPackageMenu(){
-		int counter = 0;
-		for (SetPackage i : setPackageItems) {
+		int counter = noOfAlaCarteItems;
+		while(counter < menuItems.size()){
 			System.out.printf("%d\t", counter);
-			i.displayMenuItem();
+			this.menuItems.get(counter).displayMenuItem();
 			counter++;
 		}
 	}
 
-	public MenuItem getAlaCarteItem(int itemID){
-		return this.alaCarteItems.get(itemID);
+	public MenuItem getItem(int itemID){
+		return this.menuItems.get(itemID);
 	}
 
-	public MenuItem getSetPackage(int itemID){
-		return this.setPackageItems.get(itemID);
-	}
 
 	public void editMenu(){
 		int choice;
@@ -95,28 +92,27 @@ public class Menu {
 					switch(itemType){
 						case 1:
 							newItem = new AlaCarteItem(name, description, price, ItemType.MainCourse);
-							this.alaCarteItems.add(newItem);newItem.displayMenuItem();
+							this.menuItems.add(noOfAlaCarteItems, newItem);newItem.displayMenuItem();noOfAlaCarteItems++;
 							break;
 						case 2:
 							newItem = new AlaCarteItem(name, description, price, ItemType.Drinks);
-							this.alaCarteItems.add(newItem);newItem.displayMenuItem();
+							this.menuItems.add(noOfAlaCarteItems, newItem);newItem.displayMenuItem();noOfAlaCarteItems++;
 							break;
 						case 3:
 							newItem = new AlaCarteItem(name, description, price, ItemType.Drinks);
-							this.alaCarteItems.add(newItem);newItem.displayMenuItem();
+							this.menuItems.add(noOfAlaCarteItems, newItem);newItem.displayMenuItem();noOfAlaCarteItems++;
 							break;
 						case 4:
 							newItem = new AlaCarteItem(name, description, price, ItemType.SideDish);
-							this.alaCarteItems.add(newItem);newItem.displayMenuItem();
+							this.menuItems.add(noOfAlaCarteItems, newItem);newItem.displayMenuItem();noOfAlaCarteItems++;
 							break;
 					}
-					
                     break;
                 case 2: 
 					this.displayAlaCarteMenu();
 					System.out.println("Enter the itemID to be edited:");
                     itemID = sc.nextInt();
-					AlaCarteItem itemToBeEdited = this.alaCarteItems.get(itemID);
+					AlaCarteItem itemToBeEdited = (AlaCarteItem) this.menuItems.get(itemID);
 					System.out.println("Enter Item Name: (or -1 to skip)");
 					sc.nextLine();
 					name = sc.nextLine();
@@ -150,7 +146,7 @@ public class Menu {
 					this.displayAlaCarteMenu();
 					System.out.println("Enter the itemID to be removed:");
 					itemID = sc.nextInt();
-					AlaCarteItem itemToBeRemoved = this.alaCarteItems.remove(itemID);
+					MenuItem itemToBeRemoved = this.menuItems.remove(itemID); noOfAlaCarteItems--;
 					System.out.println("AlaCarteItem " + itemToBeRemoved.getName() + " has been removed.");
                     break;
                 case 4: 
@@ -168,18 +164,18 @@ public class Menu {
 					System.out.println("\tEnter itemID:");
 					itemID = sc.nextInt();
 					while (itemID != -1){
-						newPackage.addItem(this.alaCarteItems.get(itemID));
+						newPackage.addItem((AlaCarteItem) this.menuItems.get(itemID));
 						System.out.println("\tEnter itemID:");
 						itemID = sc.nextInt();
 					}
-					this.setPackageItems.add(newPackage);
+					this.menuItems.add(newPackage);
 					newPackage.displayMenuItem();
                     break;
                 case 5:
 					this.displaySetPackageMenu();
 					System.out.println("Enter the itemID to be edited:");
 					itemID = sc.nextInt();
-					SetPackage setPackageToBeEdited = this.setPackageItems.get(itemID);
+					SetPackage setPackageToBeEdited = (SetPackage) this.menuItems.get(itemID);
 					System.out.println("Enter Set Package Name: (or -1 to skip)");
 					sc.nextLine();
 					name = sc.nextLine();
@@ -198,7 +194,7 @@ public class Menu {
 					System.out.println("\tEnter itemID:");
 					itemID = sc.nextInt();
 					while (itemID != -1){
-						setPackageToBeEdited.addItem(this.alaCarteItems.get(itemID));
+						setPackageToBeEdited.addItem((AlaCarteItem) this.menuItems.get(itemID));
 						System.out.println("\tEnter itemID:");
 						itemID = sc.nextInt();
 					}
@@ -208,7 +204,7 @@ public class Menu {
 					System.out.println("\tEnter itemID:");
 					itemID = sc.nextInt();
 					while (itemID != -1){
-						setPackageToBeEdited.removeItem(this.alaCarteItems.get(itemID));
+						setPackageToBeEdited.removeItem((AlaCarteItem) this.menuItems.get(itemID));
 						System.out.println("\tEnter itemID:");
 						itemID = sc.nextInt();
 					}
@@ -221,7 +217,7 @@ public class Menu {
 					this.displaySetPackageMenu();
 					System.out.println("Enter the itemID to be removed:");
 					itemID = sc.nextInt();
-					SetPackage setPackageToBeRemoved = this.setPackageItems.remove(itemID);
+					MenuItem setPackageToBeRemoved = this.menuItems.remove(itemID);
 					System.out.println("SetPackageItem " + setPackageToBeRemoved.getName() + " has been removed.");
                     break;
                 case 7: System.out.println("Done editing, Back to Homepage...");

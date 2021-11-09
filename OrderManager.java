@@ -26,27 +26,15 @@ public class OrderManager {
         newOrder = new Order(staff, customer);
         customer.setOrder(newOrder);
 
-        menu.displayAlaCarteMenu();
-        System.out.println("Enter Ala Carte Item ID to be Ordered: (-1) to end");
+        menu.displayMenu();
+        System.out.println("Enter Item ID to be Ordered: (-1) to end");
         itemID = sc.nextInt();
         while(itemID != -1){
-            newItem = menu.getAlaCarteItem(itemID);
+            newItem = menu.getItem(itemID);
             System.out.println("Enter quantity:");
             quantity = sc.nextInt();
             newOrder.addItemOrder(new ItemOrder(newItem, quantity));
-            System.out.println("Enter Ala Carte Item ID to be Ordered: (-1) to end");
-            itemID = sc.nextInt();
-        }
-
-        menu.displaySetPackageMenu();
-        System.out.println("Enter Set Package ID to be Ordered: (-1) to end");
-        itemID = sc.nextInt();
-        while(itemID != -1){
-            newItem = menu.getSetPackage(itemID);
-            System.out.println("Enter quantity:");
-            quantity = sc.nextInt();
-            newOrder.addItemOrder(new ItemOrder(newItem, quantity));
-            System.out.println("Enter Set Package ID to be Ordered: (-1) to end");
+            System.out.println("Enter Item ID to be Ordered: (-1) to end");
             itemID = sc.nextInt();
         }
     }

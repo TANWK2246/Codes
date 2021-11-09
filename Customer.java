@@ -19,10 +19,6 @@ public class Customer {
 		this.noOfPax = noOfPax;
 		this.table = table;
 	}
-
-	public Order createOrder() {
-		throw new UnsupportedOperationException();
-	}
 	
 	public String getName() {
 		return this.name;
@@ -79,7 +75,5 @@ public class Customer {
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
-
-	
 
 }

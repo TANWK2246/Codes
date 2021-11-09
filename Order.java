@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.time.LocalDateTime;
 
 public class Order {
-	// private int orderID;
 	private LocalDateTime createdAt;
 	private ArrayList<ItemOrder> itemOrder = new ArrayList<ItemOrder>();
 	private Staff created_by;

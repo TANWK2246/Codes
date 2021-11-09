@@ -26,7 +26,7 @@ public class CustomerManager {
 			tableManager.bookATable(tableID);
 			customer = new Customer(name, noOfPax, tableManager.getTable(tableID));
 			tableManager.getTable(tableID).setCustomer(customer);
-			customers.add(customer);
+			this.customers.add(customer);
 
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + tableID);
 		}

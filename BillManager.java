@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BillManager {
-	private Restaurant restaurant;
 	private ArrayList<Bill> bills = new ArrayList<Bill>();
 
 	public void generateBill(TableManager tableManager) {
@@ -25,6 +24,7 @@ public class BillManager {
 		}
 
 		newBill = new Bill(bills.size(),customer);
+		bills.add(newBill);
 
 		newBill.printOrderInvoice();
 

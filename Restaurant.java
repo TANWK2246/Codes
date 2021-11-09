@@ -9,8 +9,6 @@ public class Restaurant {
 	private BillManager billManager = new BillManager();
 	private OrderManager orderManager = new OrderManager();
 	
-	
-
 	public void generateBill(int tableID) {
 		throw new UnsupportedOperationException();
 	}

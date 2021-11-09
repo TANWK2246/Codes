@@ -4,7 +4,6 @@ public class Customer {
 	private boolean hasMembership;
 	private int phone;
 	private Order order;
-	private Bill bill;
 	private Table table;
 	private Reservation reservation;
 
@@ -62,14 +61,6 @@ public class Customer {
 
 	public void setOrder(Order order) {
 		this.order = order;
-	}
-
-	public Bill getBill() {
-		return this.bill;
-	}
-
-	public void setBill(Bill bill) {
-		this.bill = bill;
 	}
 
 	public Table getTable() {

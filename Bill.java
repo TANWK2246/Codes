@@ -1,10 +1,14 @@
+import java.time.LocalDateTime;
+
 public class Bill {
 	private int billID;
-	public Customer customer;
+	private LocalDateTime checkOutTime;
+	private Customer customer;
 
 	public Bill(int billID, Customer customer){
 		this.billID = billID;
 		this.customer = customer;
+		this.checkOutTime = LocalDateTime.now();
 	}
 
 	public void printOrderInvoice() {
@@ -16,6 +20,7 @@ public class Bill {
 		System.out.println("Table No.: "+this.customer.getTable().getTableID());
 		System.out.println("Staff ID: "+this.customer.getOrder().getCreated_by().getStaffID());
 		System.out.println("Bill ID: "+this.billID);
+		System.out.println(this.checkOutTime);
 
 		this.customer.getOrder().printOrderWithSubtotal();
 

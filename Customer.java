@@ -7,9 +7,10 @@ public class Customer {
 	private Table table;
 	private Reservation reservation;
 
-	public Customer(String name, int noOfPax, int phone) {
+	public Customer(String name, int noOfPax, Table table, int phone) {
 		this.name = name;
 		this.noOfPax = noOfPax;
+		this.table = table;
 		this.phone = phone;
 	}
 

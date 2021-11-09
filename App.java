@@ -46,8 +46,12 @@ public class App{
                     restaurant.getOrderManager().editOrder(restaurant.getTableManager(), restaurant.getMenu());
                     break;
                 case 8:
+                    restaurant.getReservationManager().createReservation(restaurant.getTableManager(), restaurant.getCustomerManager());
                     break;
                 case 9:
+                    restaurant.getReservationManager().printReservations();
+                    restaurant.getReservationManager().updateReservationValidity();
+                    restaurant.getReservationManager().printReservations();
                     break;
                 case 10:
                     restaurant.getBillManager().generateBill(restaurant.getTableManager());

@@ -31,4 +31,8 @@ public class CustomerManager {
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + tableID);
 		}
 	}
+
+	public void addCustomer(Customer customer){
+		this.customers.add(customer);
+	}
 }

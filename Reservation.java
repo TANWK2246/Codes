@@ -42,7 +42,7 @@ public class Reservation {
 		this.validity = validity;
 	}
 
-	public void updateValidity() {
+	public void updateValidity(TableManager tableManager) {
 		if(this.getValidity() == true){
 			LocalDateTime now = LocalDateTime.now();
     	
@@ -50,11 +50,13 @@ public class Reservation {
 
 			if(duration.toMinutes() > 15){
 				this.setValidity(false);
+				Customer customer = this.customer;
+				tableManager.releaseATable(customer.getTable().getTableID());
 			}
 		}
 	}
 
-	public void printReservation(){
-		System.out.println(this.getCheckInTime() + "\t" + this.getCustomer().getTable().getTableID() + "\t" + this.getCustomer().getName() + "\t" + this.getValidity());
-	}
+	// public void printReservation(){
+	// 	System.out.println(this.getCheckInTime() + "\t" + this.getCustomer().getTable().getTableID() + "\t" + this.getCustomer().getName() + "\t" + this.getValidity());
+	// }
 }

@@ -14,13 +14,14 @@ public class App{
             System.out.println("3: Display Empty Tables");
             System.out.println("4: Assign New Customer");
             System.out.println("5: Create Order");
-            System.out.println("6: View/Edit Order");
+            System.out.println("6: View Order");
             System.out.println("7: Edit Order");
             System.out.println("8: Create Reservation Booking");
-            System.out.println("9: Check/Remove Reservation Booking");
-            System.out.println("10: Make Payment / Print Order Invoice");
-            System.out.println("11: Print Sales Revenue Report");
-            System.out.println("12: Terminate the Programme");
+            System.out.println("9: Check Reservation Booking");
+            System.out.println("10: Remove Reservation Booking");
+            System.out.println("11: Make Payment / Print Order Invoice");
+            System.out.println("12: Print Sales Revenue Report");
+            System.out.println("13: Terminate the Programme");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -34,6 +35,7 @@ public class App{
                     restaurant.getTableManager().showEmptyTables();
                     break;
                 case 4: 
+                    restaurant.getReservationManager().updateReservationValidity(restaurant.getTableManager());
                     restaurant.getCustomerManager().assignNewCustomerToTable(restaurant.getTableManager());
                     break;
                 case 5:
@@ -49,17 +51,19 @@ public class App{
                     restaurant.getReservationManager().createReservation(restaurant.getTableManager(), restaurant.getCustomerManager());
                     break;
                 case 9:
-                    restaurant.getReservationManager().printReservations();
-                    restaurant.getReservationManager().updateReservationValidity();
-                    restaurant.getReservationManager().printReservations();
+                    restaurant.getReservationManager().updateReservationValidity(restaurant.getTableManager());
+                    restaurant.getReservationManager().checkReservation();
                     break;
                 case 10:
-                    restaurant.getBillManager().generateBill(restaurant.getTableManager());
+                    restaurant.getReservationManager().removeReservation(restaurant.getTableManager());
                     break;
                 case 11:
+                    restaurant.getBillManager().generateBill(restaurant.getTableManager());
+                    break;
+                case 12:
                     break;
 
-                case 12: System.out.println("Program terminating...");
+                case 13: System.out.println("Program terminating...");
             }
 
         }while (choice < 12);

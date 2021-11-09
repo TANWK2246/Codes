@@ -37,6 +37,7 @@ public class Bill {
 		
 
 		finalTotal = totalAfterDiscount + GST + ServiceCharge;
+		finalTotal = Math.round(finalTotal * 100) / 100.0;
 		System.out.println("Total due: $" + finalTotal);
 
 		System.out.println("=============================================");

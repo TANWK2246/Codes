@@ -38,7 +38,7 @@ public class ReservationManager {
 				System.out.println("Can only make reservation 1 hour in advance!");
 				return;
 			}
-			
+
 			tableManager.bookATable(tableID);
 
 			customer = new Customer(name, noOfPax, tableManager.getTable(tableID), phone);
@@ -47,34 +47,60 @@ public class ReservationManager {
 
 			customerManager.addCustomer(customer);
 			
-			
-			
 			newReservation = new Reservation(reservations.size(), customer, checkInTime);
 
 			customer.setReservation(newReservation);
 			reservations.add(newReservation);
 
 			System.out.println("Table number "+ tableID+ " has been reserved for  " + customer.getName());
+			System.out.println("Reservation ID: "+ newReservation.getReservationID());
 		}
 	}
 
 	public void checkReservation() {
-		throw new UnsupportedOperationException();
+		int reservationID;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Reservation ID to check:");
+		reservationID = sc.nextInt();
+
+		for(Reservation i: reservations){
+			if(i.getReservationID() == reservationID){
+				if(i.getValidity() == true){
+					System.out.println("Reservation found at table number " + i.getCustomer().getTable().getTableID());return;
+				}else{
+					System.out.println("Reservation removed!");return;
+				}
+			}
+		}
+		System.out.println("Reservation Not found");return;
 	}
 
-	public void removeReservation() {
-		throw new UnsupportedOperationException();
-	}
+	public void removeReservation(TableManager tableManager) {
+		int reservationID;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Reservation ID to check:");
+		reservationID = sc.nextInt();
 
-	public void printReservations(){
 		for(Reservation i : reservations){
-			i.printReservation();
+			if(i.getReservationID() == reservationID){
+				i.setValidity(false);
+				Customer customer = i.getCustomer();
+				tableManager.releaseATable(customer.getTable().getTableID());
+				return;
+			}
 		}
 	}
 
-	public void updateReservationValidity(){
+	// public void printReservations(){
+	// 	System.out.println("Reservation Records");
+	// 	for(Reservation i : reservations){
+	// 		if(i.getValidity() == true) i.printReservation();
+	// 	}
+	// }
+
+	public void updateReservationValidity(TableManager tableManager){
 		for(Reservation i : reservations){
-			i.updateValidity();
+			i.updateValidity(tableManager);
 		}
 	}
 }

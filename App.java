@@ -39,8 +39,19 @@ public class App{
                     restaurant.getOrderManager().createOrder(restaurant.getTableManager(), restaurant.getStaffManager(), restaurant.getMenu());
                     break;
                 case 6:
-                    
+                    restaurant.getOrderManager().viewOrder(restaurant.getTableManager());
                     break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+
+                case 9:
+                    restaurant.getBillManager().generateBill(restaurant.getTableManager());
+                    break;
+                case 10:
+                    break;
+
                 case 11: System.out.println("Program terminating...");
             }
 

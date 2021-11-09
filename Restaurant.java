@@ -8,7 +8,7 @@ public class Restaurant {
 	private ReservationManager reservationManager = new ReservationManager();
 	private BillManager billManager = new BillManager();
 	private OrderManager orderManager = new OrderManager();
-
+	
 	
 
 	public void generateBill(int tableID) {

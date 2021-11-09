@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class OrderManager {
-    public void createOrder(TableManager tablaManager, StaffManager staffManager, Menu menu){
+    public void createOrder(TableManager tableManager, StaffManager staffManager, Menu menu){
         Scanner sc = new Scanner(System.in);
 
         int tableID, staffID, itemID, quantity;
@@ -16,14 +16,15 @@ public class OrderManager {
         
         System.out.println("Enter table ID:");
 		tableID = sc.nextInt();
-        if(tablaManager.getTable(tableID).getIsOccupied() == true){
-            customer = tablaManager.getTable(tableID).getCustomer();
+        if(tableManager.getTable(tableID).getIsOccupied() == true){
+            customer = tableManager.getTable(tableID).getCustomer();
         }else{
             System.out.println("There is no customer on the table.");
             return;
         }
         
         newOrder = new Order(staff, customer);
+        customer.setOrder(newOrder);
 
         menu.displayAlaCarteMenu();
         System.out.println("Enter Ala Carte Item ID to be Ordered: (-1) to end");
@@ -33,6 +34,8 @@ public class OrderManager {
             System.out.println("Enter quantity:");
             quantity = sc.nextInt();
             newOrder.addItemOrder(new ItemOrder(newItem, quantity));
+            System.out.println("Enter Ala Carte Item ID to be Ordered: (-1) to end");
+            itemID = sc.nextInt();
         }
 
         menu.displaySetPackageMenu();
@@ -43,6 +46,24 @@ public class OrderManager {
             System.out.println("Enter quantity:");
             quantity = sc.nextInt();
             newOrder.addItemOrder(new ItemOrder(newItem, quantity));
+            System.out.println("Enter Set Package ID to be Ordered: (-1) to end");
+            itemID = sc.nextInt();
         }
+    }
+
+    public void viewOrder(TableManager tableManager){
+        Scanner sc = new Scanner(System.in);
+        int tableID;
+        System.out.println("Enter table ID:");
+		tableID = sc.nextInt();
+
+        Order order = tableManager.getTable(tableID).getCustomer().getOrder();
+
+        if(order == null){
+            System.out.println("There is no order for this table yet.");
+            return;
+        }
+
+        order.printOrder();
     }
 }

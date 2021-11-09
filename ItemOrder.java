@@ -2,6 +2,7 @@ public class ItemOrder {
 	private int quantity;
 	private MenuItem item;
 
+	
 	public ItemOrder(MenuItem item, int quantity){
 		this.item = item;
 		this.quantity = quantity;
@@ -15,7 +16,15 @@ public class ItemOrder {
 		this.quantity = quantity;
 	}
 
+	public MenuItem getItem() {
+		return this.item;
+	}
+
+	public void setItem(MenuItem item) {
+		this.item = item;
+	}
+
 	public double calculateSubtotal() {
-		throw new UnsupportedOperationException();
+		return this.item.getPrice() * this.quantity;
 	}
 }

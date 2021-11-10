@@ -7,30 +7,18 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class App{
-    public static void main(String[] args)
+public class Testing{
+
+	public static void main(String[] args)
     {
-        Restaurant restaurant = null;
-        try {
-			FileInputStream fi = new FileInputStream(new File("restaurant.txt"));
-			ObjectInputStream oi = new ObjectInputStream(fi);
-
-			// Read objects
-            restaurant = (Restaurant) oi.readObject();
-
-			oi.close();
-			fi.close();
-
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
-		} catch (IOException e) {
-			System.out.println("Error initializing stream");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
+        Restaurant restaurant = new Restaurant();
         int choice;
         Scanner sc = new Scanner(System.in);
+
+        restaurant.getTableManager().loadTable();
+        restaurant.getMenu().loadMenu();
+        restaurant.getStaffManager().loadStaff();
+
         do{
             System.out.println("Perform the following methods:");
             System.out.println("1: Display Menu");
@@ -107,10 +95,26 @@ public class App{
             FileInputStream fi = new FileInputStream(new File("restaurant.txt"));
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
+			// Read objects
+            restaurant = (Restaurant) oi.readObject();
+
+			oi.close();
+			fi.close();
+
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		} catch (IOException e) {
 			System.out.println("Error initializing stream");
+		}  catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
+
+        restaurant.getMenu().displayMenu();
+        restaurant.getTableManager().showEmptyTables();
+        restaurant.getCustomerManager().printCustomers();
+		restaurant.getStaffManager().printStaff();
+        restaurant.getBillManager().printBills();
+        restaurant.getReservationManager().printReservations();
     }
+    
 }

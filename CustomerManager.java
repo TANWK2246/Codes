@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class CustomerManager {
+public class CustomerManager implements Serializable{
 	private ArrayList<Customer> customers = new ArrayList<Customer>();
+
+	public CustomerManager(){}
 
 	public void editCustomer() {
 		throw new UnsupportedOperationException();
@@ -30,9 +33,17 @@ public class CustomerManager {
 
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + tableID);
 		}
+
+		
 	}
 
 	public void addCustomer(Customer customer){
 		this.customers.add(customer);
+	}
+
+	public void printCustomers(){
+		for(Customer i : customers){
+			System.out.println(i.getName());
+		}
 	}
 }

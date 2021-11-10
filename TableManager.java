@@ -1,9 +1,15 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class TableManager {
+public class TableManager implements Serializable{
     private ArrayList<Table> tables = new ArrayList<Table>();
 
     public TableManager(){
+        
+        
+    }
+
+    public void loadTable(){
         this.tables.add(new Table(this.tables.size(), 2));
         this.tables.add(new Table(this.tables.size(), 2));
         this.tables.add(new Table(this.tables.size(), 2));

@@ -1,7 +1,11 @@
-public abstract class MenuItem {
+import java.io.Serializable;
+
+public abstract class MenuItem implements Serializable{
 	private String name;
 	private String description;
 	private double price;
+
+	public MenuItem(){}
 
 	public MenuItem(String name, String description, double price){
 		this.name = name;

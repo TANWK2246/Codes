@@ -1,8 +1,12 @@
-public class Table {
+import java.io.Serializable;
+
+public class Table implements Serializable{
 	private int tableID;
 	private int tableCapacity;
 	private boolean isOccupied;
 	private Customer customer;
+
+	public Table(){}
 
 	public Table(int tableID, int tableCapacity){
 		this.tableID = tableID;

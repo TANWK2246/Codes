@@ -1,8 +1,12 @@
-public class Staff {
+import java.io.Serializable;
+
+public class Staff implements Serializable{
 	private int staffID;
 	private String name;
 	private Gender gender;
 	private JobTitle jobTitle;
+
+	public Staff(){}
 
 	public Staff(int staffID, String name, Gender gender, JobTitle jobTitle){
 		this.staffID = staffID;

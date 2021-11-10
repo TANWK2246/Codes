@@ -1,7 +1,10 @@
-public class ItemOrder {
+import java.io.Serializable;
+
+public class ItemOrder implements Serializable{
 	private int quantity;
 	private MenuItem item;
 
+	public ItemOrder(){}
 	
 	public ItemOrder(MenuItem item, int quantity){
 		this.item = item;

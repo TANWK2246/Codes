@@ -2,9 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.io.Serializable;
 
-public class ReservationManager {
+public class ReservationManager implements Serializable{
 	public ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+
+	public ReservationManager(){}
 
 	public void createReservation(TableManager tableManager, CustomerManager customerManager) {
 		Scanner sc = new Scanner(System.in);
@@ -36,6 +39,7 @@ public class ReservationManager {
 
 			if(duration.toMinutes() < 60){
 				System.out.println("Can only make reservation 1 hour in advance!");
+
 				return;
 			}
 
@@ -55,6 +59,8 @@ public class ReservationManager {
 			System.out.println("Table number "+ tableID+ " has been reserved for  " + customer.getName());
 			System.out.println("Reservation ID: "+ newReservation.getReservationID());
 		}
+
+
 	}
 
 	public void checkReservation() {
@@ -86,17 +92,20 @@ public class ReservationManager {
 				i.setValidity(false);
 				Customer customer = i.getCustomer();
 				tableManager.releaseATable(customer.getTable().getTableID());
+
 				return;
 			}
 		}
+
+
 	}
 
-	// public void printReservations(){
-	// 	System.out.println("Reservation Records");
-	// 	for(Reservation i : reservations){
-	// 		if(i.getValidity() == true) i.printReservation();
-	// 	}
-	// }
+	public void printReservations(){
+		System.out.println("Reservation Records");
+		for(Reservation i : reservations){
+			if(i.getValidity() == true) i.printReservation();
+		}
+	}
 
 	public void updateReservationValidity(TableManager tableManager){
 		for(Reservation i : reservations){

@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class Menu {
+public class Menu implements Serializable {
 	private ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
 	private int noOfAlaCarteItems = 0;
 
 	public Menu(){
+		
+	}
+
+	public void loadMenu(){
 		this.menuItems.add(new AlaCarteItem("Chicken Chop", "chicken", 12.50, ItemType.MainCourse));noOfAlaCarteItems++;
 		this.menuItems.add(new AlaCarteItem("Fish and Chips", "fish & potato", 12.50, ItemType.MainCourse));noOfAlaCarteItems++;
 		this.menuItems.add(new AlaCarteItem("Orange Juice", "orange", 8.00, ItemType.Drinks));noOfAlaCarteItems++;
@@ -224,6 +229,7 @@ public class Menu {
             }
 
         }while (choice < 7);
+
 	}
 
 }

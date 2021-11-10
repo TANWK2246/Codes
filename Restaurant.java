@@ -1,21 +1,17 @@
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Restaurant {
+public class Restaurant implements Serializable{
 	private TableManager tableManager = new TableManager();
 	private Menu menu = new Menu();
 	private StaffManager staffManager = new StaffManager();
 	private CustomerManager customerManager = new CustomerManager();
+	private OrderManager orderManager = new OrderManager();
 	private ReservationManager reservationManager = new ReservationManager();
 	private BillManager billManager = new BillManager();
-	private OrderManager orderManager = new OrderManager();
 	
-	public void generateBill(int tableID) {
-		throw new UnsupportedOperationException();
-	}
+	// private SalesRevenueReport report = new SalesRevenueReport();
 
-	public void printSalesRevenueReport() {
-		throw new UnsupportedOperationException();
-	}
+	public Restaurant(){}
 
 	public Menu getMenu(){
 		return this.menu;
@@ -44,6 +40,4 @@ public class Restaurant {
 	public OrderManager getOrderManager() {
 		return this.orderManager;
 	}
-
-
 }

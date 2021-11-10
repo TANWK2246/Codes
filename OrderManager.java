@@ -1,6 +1,9 @@
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class OrderManager {
+public class OrderManager implements Serializable{
+    public OrderManager(){}
+
     public void createOrder(TableManager tableManager, StaffManager staffManager, Menu menu){
         Scanner sc = new Scanner(System.in);
 
@@ -20,6 +23,7 @@ public class OrderManager {
             customer = tableManager.getTable(tableID).getCustomer();
         }else{
             System.out.println("There is no customer on the table.");
+
             return;
         }
         
@@ -37,6 +41,8 @@ public class OrderManager {
             System.out.println("Enter Item ID to be Ordered: (-1) to end");
             itemID = sc.nextInt();
         }
+
+
     }
 
     public void viewOrder(TableManager tableManager){
@@ -49,10 +55,12 @@ public class OrderManager {
 
         if(order == null){
             System.out.println("There is no order for this table yet.");
+
             return;
         }
 
         order.printOrder();
+
     }
 
     public void editOrder(TableManager tableManager, Menu menu){
@@ -65,6 +73,7 @@ public class OrderManager {
 
         if(order == null){
             System.out.println("There is no order for this table yet.");
+
             return;
         }
 
@@ -108,5 +117,6 @@ public class OrderManager {
                     break;
             }
         }while(choice!=4);
+
     }
 }

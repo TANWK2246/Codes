@@ -1,7 +1,8 @@
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.io.Serializable;
 
-public class Reservation {
+public class Reservation implements Serializable{
 	private int reservationID;
 	private LocalDateTime checkInTime;
 	private boolean validity;
@@ -11,6 +12,8 @@ public class Reservation {
 		return this.customer;
 	}
 
+	public Reservation(){}
+	
 	public Reservation(int reservationID, Customer customer, LocalDateTime checkInTime){
 		this.customer = customer;
 		this.reservationID = reservationID;
@@ -56,7 +59,7 @@ public class Reservation {
 		}
 	}
 
-	// public void printReservation(){
-	// 	System.out.println(this.getCheckInTime() + "\t" + this.getCustomer().getTable().getTableID() + "\t" + this.getCustomer().getName() + "\t" + this.getValidity());
-	// }
+	public void printReservation(){
+		System.out.println(this.getCheckInTime() + "\t" + this.getCustomer().getTable().getTableID() + "\t" + this.getCustomer().getName() + "\t" + this.getValidity());
+	}
 }

@@ -1,5 +1,7 @@
-public class AlaCarteItem extends MenuItem {
+public class AlaCarteItem extends MenuItem{
 	private ItemType itemType;
+
+	public AlaCarteItem(){}
 
 	public AlaCarteItem(String name, String description, double price, ItemType itemType){
 		super( name,  description,  price);

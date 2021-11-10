@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Order {
+public class Order implements Serializable{
 	private LocalDateTime createdAt;
 	private ArrayList<ItemOrder> itemOrder = new ArrayList<ItemOrder>();
 	private Staff created_by;
 	private Customer customer;
+
+	public Order(){}
 
 	public Order(Staff staff, Customer customer){
 		this.createdAt = LocalDateTime.now();  

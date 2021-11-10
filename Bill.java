@@ -1,9 +1,12 @@
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Bill {
+public class Bill implements Serializable{
 	private int billID;
 	private LocalDateTime checkOutTime;
 	private Customer customer;
+
+	public Bill(){}
 
 	public Bill(int billID, Customer customer){
 		this.billID = billID;

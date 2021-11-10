@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
 
-public class BillManager {
+public class BillManager implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Bill> bills = new ArrayList<Bill>();
+
+	public BillManager() {}
 
 	public void generateBill(TableManager tableManager) {
 		Scanner sc = new Scanner(System.in);
@@ -29,7 +33,22 @@ public class BillManager {
 		newBill.printOrderInvoice();
 
 		tableManager.releaseATable(tableID);
+
+
 	}
 
+	public ArrayList<Bill> getBills(){
+		return this.bills;
+	}
+
+	public void printSalesRevenueReport(Menu menu){
+		System.out.println("Sales Revenue Report");
+	}
+
+	public void printBills(){
+		for(Bill i : bills){
+			i.printOrderInvoice();
+		}
+	}
 	
 }

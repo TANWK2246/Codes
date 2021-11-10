@@ -1,4 +1,6 @@
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable{
 	private String name;
 	private int noOfPax;
 	private boolean hasMembership;
@@ -6,6 +8,8 @@ public class Customer {
 	private Order order;
 	private Table table;
 	private Reservation reservation;
+
+	public Customer(){}
 
 	public Customer(String name, int noOfPax, Table table, int phone) {
 		this.name = name;

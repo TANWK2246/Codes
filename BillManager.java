@@ -8,7 +8,7 @@ public class BillManager implements Serializable{
 
 	public BillManager() {}
 
-	public void generateBill(TableManager tableManager) {
+	public void generateBill(TableManager tableManager, SalesRevenueReport salesRevenueReport) {
 		Scanner sc = new Scanner(System.in);
         int tableID, membership;
 		Customer customer;
@@ -34,15 +34,12 @@ public class BillManager implements Serializable{
 
 		tableManager.releaseATable(tableID);
 
+		salesRevenueReport.updateRecord(newBill);
 
 	}
 
 	public ArrayList<Bill> getBills(){
 		return this.bills;
-	}
-
-	public void printSalesRevenueReport(Menu menu){
-		System.out.println("Sales Revenue Report");
 	}
 
 	public void printBills(){

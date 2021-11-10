@@ -70,10 +70,10 @@ public class Testing{
                     restaurant.getReservationManager().removeReservation(restaurant.getTableManager());
                     break;
                 case 11:
-                    restaurant.getBillManager().generateBill(restaurant.getTableManager());
+                    restaurant.getBillManager().generateBill(restaurant.getTableManager(), restaurant.getSalesRevenueReport());
                     break;
                 case 12:
-                    restaurant.getBillManager().printSalesRevenueReport(restaurant.getMenu());
+                    restaurant.getSalesRevenueReport().printSalesRevenueReport();
                     break;
                 case 13: 
                     System.out.println("Program terminating...");

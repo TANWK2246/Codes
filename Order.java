@@ -5,6 +5,11 @@ import java.io.Serializable;
 public class Order implements Serializable{
 	private LocalDateTime createdAt;
 	private ArrayList<ItemOrder> itemOrder = new ArrayList<ItemOrder>();
+
+	public ArrayList<ItemOrder> getItemOrder() {
+		return this.itemOrder;
+	}
+
 	private Staff created_by;
 	private Customer customer;
 

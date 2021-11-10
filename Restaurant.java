@@ -9,7 +9,7 @@ public class Restaurant implements Serializable{
 	private ReservationManager reservationManager = new ReservationManager();
 	private BillManager billManager = new BillManager();
 	
-	// private SalesRevenueReport report = new SalesRevenueReport();
+	private SalesRevenueReport report = new SalesRevenueReport();
 
 	public Restaurant(){}
 
@@ -39,5 +39,9 @@ public class Restaurant implements Serializable{
 
 	public OrderManager getOrderManager() {
 		return this.orderManager;
+	}
+
+	public SalesRevenueReport getSalesRevenueReport() {
+		return this.report;
 	}
 }

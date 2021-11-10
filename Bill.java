@@ -4,7 +4,15 @@ import java.io.Serializable;
 public class Bill implements Serializable{
 	private int billID;
 	private LocalDateTime checkOutTime;
+
+	
+
+
+
 	private Customer customer;
+	private double discount;
+	private double serviceCharge;
+	private double GST;
 
 	public Bill(){}
 
@@ -12,10 +20,20 @@ public class Bill implements Serializable{
 		this.billID = billID;
 		this.customer = customer;
 		this.checkOutTime = LocalDateTime.now();
+
+		if(this.customer.isHasMembership() == true){
+			this.discount = (Math.round(this.customer.getOrder().calculateInitialTotalPrice() * 0.15 * 100)/100.0);
+		}else{
+			this.discount = 0.0;
+		}
+
+		this.serviceCharge = Math.round((this.customer.getOrder().calculateInitialTotalPrice() - this.discount) * 0.10 * 100)/100.0;
+
+		this.GST = Math.round((this.customer.getOrder().calculateInitialTotalPrice() - this.discount) * 0.07 * 100)/100.0;
 	}
 
 	public void printOrderInvoice() {
-		double total, GST, ServiceCharge, discount, totalAfterDiscount, finalTotal;
+		double finalTotal;
 		System.out.println("Light and Sword");
 		System.out.println("123, Orchard Street, 123456 Singapore");
 		System.out.println("=============================================");
@@ -27,19 +45,12 @@ public class Bill implements Serializable{
 
 		this.customer.getOrder().printOrderWithSubtotal();
 
-		total = this.customer.getOrder().calculateInitialTotalPrice();
+		System.out.println("Subtotal: " + this.customer.getOrder().calculateInitialTotalPrice());
+		System.out.println("Membership Discount: " + this.discount);
+		System.out.println("Service Charge (10%): " + this.serviceCharge);
+		System.out.println("GST (7%): " + this.GST);
 
-		System.out.println("Subtotal: " + total);
-
-		discount = this.calculateAndPrintDiscount(total, this.customer);
-
-		totalAfterDiscount = total - discount;
-
-		GST = this.calculateAndPrintGST(totalAfterDiscount);
-		ServiceCharge = this.calculateAndPrintServiceCharge(totalAfterDiscount);
-		
-
-		finalTotal = totalAfterDiscount + GST + ServiceCharge;
+		finalTotal = this.customer.getOrder().calculateInitialTotalPrice() - this.discount + this.GST + this.serviceCharge;
 		finalTotal = Math.round(finalTotal * 100) / 100.0;
 		System.out.println("Total due: $" + finalTotal);
 
@@ -47,27 +58,12 @@ public class Bill implements Serializable{
 		System.out.println("Thank you for dining with us!");
 		System.out.println("=============================================");
 	}
-
-	private double calculateAndPrintServiceCharge(double amount){
-		double ServiceCharge = Math.round(amount * 0.10 * 100) / 100.0;
-		System.out.println("10% Service Charge: " + ServiceCharge);
-		return ServiceCharge;
-	}
-
-	private double calculateAndPrintGST(double amount){
-		double GST = Math.round(amount * 0.07 * 100) / 100.0;
-		System.out.println("7% GST: " + GST);
-		return GST;
-	}
-
-	private double calculateAndPrintDiscount(double amount, Customer customer){
-		if(customer.isHasMembership() == false) return 0;
-		else{
-			double discount = Math.round(amount * 0.15 * 100) / 100.0;
-			System.out.println("Membership Discount: -" + discount);
-			return discount;
-		}
-	}
-
 	
+	public Customer getCustomer() {
+		return this.customer;
+	}
+
+	public LocalDateTime getCheckOutTime() {
+		return this.checkOutTime;
+	}
 }

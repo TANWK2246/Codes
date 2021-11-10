@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.io.Serializable;
 
 public class BillManager implements Serializable{
-	private static final long serialVersionUID = 1L;
 	private ArrayList<Bill> bills = new ArrayList<Bill>();
 
 	public BillManager() {}
@@ -36,16 +35,6 @@ public class BillManager implements Serializable{
 
 		salesRevenueReport.updateRecord(newBill);
 
-	}
-
-	public ArrayList<Bill> getBills(){
-		return this.bills;
-	}
-
-	public void printBills(){
-		for(Bill i : bills){
-			i.printOrderInvoice();
-		}
 	}
 	
 }

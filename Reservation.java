@@ -59,7 +59,5 @@ public class Reservation implements Serializable{
 		}
 	}
 
-	public void printReservation(){
-		System.out.println(this.getCheckInTime() + "\t" + this.getCustomer().getTable().getTableID() + "\t" + this.getCustomer().getName() + "\t" + this.getValidity());
-	}
+	
 }

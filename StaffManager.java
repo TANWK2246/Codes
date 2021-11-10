@@ -21,22 +21,4 @@ public class StaffManager implements Serializable{
 		return null;
 	}
 
-	public void printStaff(){
-		System.out.println("Staff name list:");
-		for(Staff i: staffs){
-			System.out.println(i.getName());
-		}
-	}
-
-	public void addStaff() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void editStaff() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void removeStaff() {
-		throw new UnsupportedOperationException();
-	}
 }

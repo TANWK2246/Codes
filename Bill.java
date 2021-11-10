@@ -4,11 +4,6 @@ import java.io.Serializable;
 public class Bill implements Serializable{
 	private int billID;
 	private LocalDateTime checkOutTime;
-
-	
-
-
-
 	private Customer customer;
 	private double discount;
 	private double serviceCharge;

@@ -100,13 +100,7 @@ public class ReservationManager implements Serializable{
 
 	}
 
-	public void printReservations(){
-		System.out.println("Reservation Records");
-		for(Reservation i : reservations){
-			if(i.getValidity() == true) i.printReservation();
-		}
-	}
-
+	
 	public void updateReservationValidity(TableManager tableManager){
 		for(Reservation i : reservations){
 			i.updateValidity(tableManager);

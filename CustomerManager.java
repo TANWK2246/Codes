@@ -7,10 +7,6 @@ public class CustomerManager implements Serializable{
 
 	public CustomerManager(){}
 
-	public void editCustomer() {
-		throw new UnsupportedOperationException();
-	}
-
 	public void assignNewCustomerToTable(TableManager tableManager) {
 		Scanner sc = new Scanner(System.in);
 		int noOfPax, tableID;
@@ -41,9 +37,4 @@ public class CustomerManager implements Serializable{
 		this.customers.add(customer);
 	}
 
-	public void printCustomers(){
-		for(Customer i : customers){
-			System.out.println(i.getName());
-		}
-	}
 }

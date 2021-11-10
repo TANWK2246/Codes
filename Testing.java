@@ -108,13 +108,6 @@ public class Testing{
 		}  catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
-        restaurant.getMenu().displayMenu();
-        restaurant.getTableManager().showEmptyTables();
-        restaurant.getCustomerManager().printCustomers();
-		restaurant.getStaffManager().printStaff();
-        restaurant.getBillManager().printBills();
-        restaurant.getReservationManager().printReservations();
     }
     
 }

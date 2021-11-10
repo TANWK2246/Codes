@@ -1,14 +1,13 @@
 import java.io.Serializable;
 
 public class Restaurant implements Serializable{
-	private TableManager tableManager = new TableManager();
 	private Menu menu = new Menu();
+	private TableManager tableManager = new TableManager();
 	private StaffManager staffManager = new StaffManager();
 	private CustomerManager customerManager = new CustomerManager();
 	private OrderManager orderManager = new OrderManager();
 	private ReservationManager reservationManager = new ReservationManager();
 	private BillManager billManager = new BillManager();
-	
 	private SalesRevenueReport report = new SalesRevenueReport();
 
 	public Restaurant(){}

@@ -4,106 +4,40 @@ import java.time.LocalDateTime;
 import java.time.Duration;
 import java.io.Serializable;
 
-public class ReservationManager implements Serializable{
-	public ArrayList<Reservation> reservations = new ArrayList<Reservation>();
-
-	public ReservationManager(){}
-
-	public void createReservation(TableManager tableManager, CustomerManager customerManager) {
-		Scanner sc = new Scanner(System.in);
-		int noOfPax, tableID, phone;
-		String name;
-		Customer customer;
+public class ReservationManager{
+	
+	public static void createReservation(String checkInDateTime, Customer customer, int phone, ReservationArray reservationArray){
 		Reservation newReservation;
 
-		System.out.println("Enter Customer Name:");
-		name = sc.nextLine();
-		System.out.println("Enter number of pax:");
-		noOfPax = sc.nextInt();
+        LocalDateTime checkInTime = LocalDateTime.parse(checkInDateTime);
 
-		tableID = tableManager.findAnEmptyTable(noOfPax);
-		if(tableID == -1){
-			System.out.println("Sorry! No suitable empty tables available!");
-		}else{
-			System.out.println("Enter phone number:");
-			phone = sc.nextInt();
+        customer.setPhone(phone);
 
-			sc.nextLine();
-			System.out.println("Enter Check In Time: (YYYY-MM-DDTHH:MM:SS) ");
-			String dateTime = sc.nextLine();
-			LocalDateTime checkInTime = LocalDateTime.parse(dateTime);
-
-			LocalDateTime now = LocalDateTime.now();
-    	
-			Duration duration = Duration.between(now, checkInTime);
-
-			if(duration.toMinutes() < 60){
-				System.out.println("Can only make reservation 1 hour in advance!");
-
-				return;
-			}
-
-			tableManager.bookATable(tableID);
-
-			customer = new Customer(name, noOfPax, tableManager.getTable(tableID), phone);
-
-			tableManager.getTable(tableID).setCustomer(customer);
-
-			customerManager.addCustomer(customer);
-			
-			newReservation = new Reservation(reservations.size(), customer, checkInTime);
-
-			customer.setReservation(newReservation);
-			reservations.add(newReservation);
-
-			System.out.println("Table number "+ tableID+ " has been reserved for  " + customer.getName());
-			System.out.println("Reservation ID: "+ newReservation.getReservationID());
-		}
-
-
+        System.out.println("Reservation ID: "+ reservationArray.addNewReservation(customer, checkInTime));
 	}
 
-	public void checkReservation() {
-		int reservationID;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Reservation ID to check:");
-		reservationID = sc.nextInt();
-
-		for(Reservation i: reservations){
-			if(i.getReservationID() == reservationID){
-				if(i.getValidity() == true){
-					System.out.println("Reservation found at table number " + i.getCustomer().getTable().getTableID());return;
-				}else{
-					System.out.println("Reservation removed!");return;
-				}
-			}
-		}
-		System.out.println("Reservation Not found");return;
+	public static int checkReservation(int reservationID, ReservationArray reservationArray) {
+        return reservationArray.checkReservation(reservationID);
 	}
 
-	public void removeReservation(TableManager tableManager) {
-		int reservationID;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Reservation ID to check:");
-		reservationID = sc.nextInt();
-
-		for(Reservation i : reservations){
-			if(i.getReservationID() == reservationID){
-				i.setValidity(false);
-				Customer customer = i.getCustomer();
-				tableManager.releaseATable(customer.getTable().getTableID());
-
-				return;
-			}
-		}
-
-
+	public static void removeReservation(int reservationID, Restaurant restaurant) {
+		TableManager.releaseATable(restaurant.getReservationArray().removeReservation(reservationID), restaurant.getTableArray());
 	}
 
 	
-	public void updateReservationValidity(TableManager tableManager){
-		for(Reservation i : reservations){
-			i.updateValidity(tableManager);
-		}
+	public static void updateReservationValidity(Restaurant restaurant){
+		restaurant.getReservationArray().updateReservationValidity(restaurant.getTableArray());
 	}
+
+    public static boolean validateReservationTime(String checkInDateTime){
+        LocalDateTime checkInTime = LocalDateTime.parse(checkInDateTime);
+
+		LocalDateTime now = LocalDateTime.now();
+    	
+		Duration duration = Duration.between(now, checkInTime);
+
+        if(duration.toMinutes() < 60) return false;
+        
+        return true;
+    }
 }

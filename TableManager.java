@@ -1,54 +1,27 @@
-import java.util.ArrayList;
-import java.io.Serializable;
-
-public class TableManager implements Serializable{
-    private ArrayList<Table> tables = new ArrayList<Table>();
-
-    public TableManager(){
-        
-        
-    }
-
-    public void loadTable(){
-        this.tables.add(new Table(this.tables.size(), 2));
-        this.tables.add(new Table(this.tables.size(), 2));
-        this.tables.add(new Table(this.tables.size(), 2));
-        this.tables.add(new Table(this.tables.size(), 2));
-        this.tables.add(new Table(this.tables.size(), 4));
-        this.tables.add(new Table(this.tables.size(), 4));
-        this.tables.add(new Table(this.tables.size(), 6));
-        this.tables.add(new Table(this.tables.size(), 6));
-        this.tables.add(new Table(this.tables.size(), 8));
-        this.tables.add(new Table(this.tables.size(), 10));
-    }
-
-    public void showEmptyTables() {
-        int counter = 0;
-		for (Table i : tables) {
-            if(i.getIsOccupied() == false){
-                System.out.printf("TableID: %d\t", counter);
-                System.out.println("Capacity: " + i.getTableCapacity());
-            }
-			counter++;
-		}
+public class TableManager {
+	public static int tableFinder(int noOfPax, TableArray tableArray) {
+        if(noOfPax % 2 == 1){noOfPax++;}
+		return tableArray.findAnEmptyTable(noOfPax);
 	}
 
-	public int findAnEmptyTable(int noOfPax) {
-		for (Table i : tables) {
-            if(i.getTableCapacity() == noOfPax & i.getIsOccupied() == false) return i.getTableID();
-		}
-        return -1;
+	public static void bookATable(int tableID, TableArray tableArray) {
+		tableArray.getTable(tableID).setIsOccupied(true);
 	}
 
-	public void bookATable(int tableID) {
-		this.tables.get(tableID).setIsOccupied(true);
+	public static void releaseATable(int tableID, TableArray tableArray) {
+		tableArray.getTable(tableID).setIsOccupied(false);
 	}
 
-	public void releaseATable(int tableID) {
-		this.tables.get(tableID).setIsOccupied(false);
+	public static boolean validateCustomerAtTable(int tableID, TableArray tableArray){
+		return tableArray.getTable(tableID).getIsOccupied();
 	}
 
-    public Table getTable(int tableID){
-        return this.tables.get(tableID);
-    }
+	public static Table getTable(int tableID, TableArray tableArray){
+		return tableArray.getTable(tableID);
+	}
+
+	public static boolean validateOrderExists(int tableID, TableArray tableArray){
+		return tableArray.getTable(tableID).hasOrder();
+	}
+
 }

@@ -45,7 +45,7 @@ public class Reservation implements Serializable{
 		this.validity = validity;
 	}
 
-	public void updateValidity(TableManager tableManager) {
+	public Customer updateValidity() {
 		if(this.getValidity() == true){
 			LocalDateTime now = LocalDateTime.now();
     	
@@ -53,10 +53,10 @@ public class Reservation implements Serializable{
 
 			if(duration.toMinutes() > 15){
 				this.setValidity(false);
-				Customer customer = this.customer;
-				tableManager.releaseATable(customer.getTable().getTableID());
+                return customer;
+				
 			}
-		}
+		}return null;
 	}
 
 	

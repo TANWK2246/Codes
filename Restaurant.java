@@ -2,42 +2,37 @@ import java.io.Serializable;
 
 public class Restaurant implements Serializable{
 	private Menu menu = new Menu();
-	private TableManager tableManager = new TableManager();
-	private StaffManager staffManager = new StaffManager();
-	private CustomerManager customerManager = new CustomerManager();
-	private OrderManager orderManager = new OrderManager();
-	private ReservationManager reservationManager = new ReservationManager();
-	private BillManager billManager = new BillManager();
+	private TableArray tableArray = new TableArray();
+	private StaffArray staffArray = new StaffArray();
+	private CustomerArray customerArray = new CustomerArray();
+	private BillArray billArray = new BillArray();
+	private ReservationArray reservationArray = new ReservationArray();
 	private SalesRevenueReport report = new SalesRevenueReport();
 
 	public Restaurant(){}
 
 	public Menu getMenu(){
-		return this.menu;
+		return menu;
 	}
 
-	public TableManager getTableManager(){
-		return this.tableManager;
+	public TableArray getTableArray(){
+		return this.tableArray;
 	}
 
-	public StaffManager getStaffManager(){
-		return this.staffManager;
+	public StaffArray getStaffArray(){
+		return this.staffArray;
 	}
 
-	public CustomerManager getCustomerManager(){
-		return this.customerManager;
+	public CustomerArray getCustomerArray(){
+		return this.customerArray;
 	}
 
-	public ReservationManager getReservationManager() {
-		return this.reservationManager;
+	public ReservationArray getReservationArray() {
+		return this.reservationArray;
 	}
 
-	public BillManager getBillManager() {
-		return this.billManager;
-	}
-
-	public OrderManager getOrderManager() {
-		return this.orderManager;
+	public BillArray getBillArray() {
+		return this.billArray;
 	}
 
 	public SalesRevenueReport getSalesRevenueReport() {

@@ -41,4 +41,9 @@ public class Table implements Serializable{
 	public void setCustomer(Customer customer){
 		this.customer = customer;
 	}
+
+	public boolean hasOrder(){
+		if(this.customer.getOrder() == null)return false;
+		return true;
+	}
 }

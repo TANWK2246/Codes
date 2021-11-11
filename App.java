@@ -53,39 +53,40 @@ public class App{
                     restaurant.getMenu().displayMenu();
                     break;
                 case 2: 
-                    restaurant.getMenu().editMenu();
+                    MenuUI.menuEditor(restaurant);
                     break;
                 case 3:
-                    restaurant.getTableManager().showEmptyTables();
+                    restaurant.getTableArray().showEmptyTables();
                     break;
                 case 4: 
-                    restaurant.getReservationManager().updateReservationValidity(restaurant.getTableManager());
-                    restaurant.getCustomerManager().assignNewCustomerToTable(restaurant.getTableManager());
+                    ReservationManager.updateReservationValidity(restaurant);
+                    CustomerUI.NewCustomer(restaurant);
                     break;
                 case 5:
-                    restaurant.getOrderManager().createOrder(restaurant.getTableManager(), restaurant.getStaffManager(), restaurant.getMenu());
+                    OrderUI.orderCreator(restaurant);
                     break;
                 case 6:
-                    restaurant.getOrderManager().viewOrder(restaurant.getTableManager());
+                    OrderUI.orderViewer(restaurant);
                     break;
                 case 7:
-                    restaurant.getOrderManager().editOrder(restaurant.getTableManager(), restaurant.getMenu());
+                    OrderUI.orderEditor(restaurant);
                     break;
                 case 8:
-                    restaurant.getReservationManager().createReservation(restaurant.getTableManager(), restaurant.getCustomerManager());
+                    ReservationManager.updateReservationValidity(restaurant);
+                    ReservationUI.reservationCreator(restaurant);
                     break;
                 case 9:
-                    restaurant.getReservationManager().updateReservationValidity(restaurant.getTableManager());
-                    restaurant.getReservationManager().checkReservation();
+                    ReservationManager.updateReservationValidity(restaurant);
+                    ReservationUI.reservationViewer(restaurant);
                     break;
                 case 10:
-                    restaurant.getReservationManager().removeReservation(restaurant.getTableManager());
+                    ReservationUI.reservationRemover(restaurant);
                     break;
                 case 11:
-                    restaurant.getBillManager().generateBill(restaurant.getTableManager(), restaurant.getSalesRevenueReport());
+                    BillUI.BillGenerator(restaurant);
                     break;
                 case 12:
-                    restaurant.getSalesRevenueReport().printSalesRevenueReport(restaurant.getBillManager().getBills());
+                    ReportUI.ReportViewer(restaurant);
                     break;
                 case 13: 
                     System.out.println("Program terminating...");

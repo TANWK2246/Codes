@@ -16,15 +16,10 @@ public class Bill implements Serializable{
 		this.customer = customer;
 		this.checkOutTime = LocalDateTime.now();
 
-		if(this.customer.isHasMembership() == true){
-			this.discount = (Math.round(this.customer.getOrder().calculateInitialTotalPrice() * 0.15 * 100)/100.0);
-		}else{
-			this.discount = 0.0;
-		}
-
-		this.serviceCharge = Math.round((this.customer.getOrder().calculateInitialTotalPrice() - this.discount) * 0.10 * 100)/100.0;
-
-		this.GST = Math.round((this.customer.getOrder().calculateInitialTotalPrice() - this.discount) * 0.07 * 100)/100.0;
+		this.discount = DiscountCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice(), this.customer.isHasMembership());
+		this.serviceCharge = ServiceChargeCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice() - this.discount);
+		this.GST = GSTCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice() - this.discount);
+	
 	}
 
 	public void printOrderInvoice() {

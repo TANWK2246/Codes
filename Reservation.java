@@ -46,17 +46,17 @@ public class Reservation implements Serializable{
 	}
 
 	public Customer updateValidity() {
-		if(this.getValidity() == true){
-			LocalDateTime now = LocalDateTime.now();
+		if(this.getValidity() == false) return null;
+		LocalDateTime now = LocalDateTime.now();
     	
-			Duration duration = Duration.between(this.checkInTime, now);
+		Duration duration = Duration.between(this.checkInTime, now);
 
-			if(duration.toMinutes() > 15){
-				this.setValidity(false);
-                return customer;
-				
-			}
-		}return null;
+		if(duration.toMinutes() > 15){
+			this.setValidity(false);
+			return this.customer;	
+		}
+
+		return null;
 	}
 
 	

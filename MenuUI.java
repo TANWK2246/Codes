@@ -15,10 +15,11 @@ public class MenuUI{
             System.out.println("Menu editing:");
             System.out.println("1: Add Ala Carte Item");
             System.out.println("2: Edit Ala Carte Item");
-            System.out.println("3: Add Set Package");
-            System.out.println("4: Edit Set Package");
-            System.out.println("5: Remove item");
-            System.out.println("6: Done");
+			System.out.println("3: Remove ALa Carte Item");
+            System.out.println("4: Add Set Package");
+            System.out.println("5: Edit Set Package");
+            System.out.println("6: Remove Set Package");
+            System.out.println("7: Done");
 			choice = sc.nextInt();
 
             switch (choice) {
@@ -50,8 +51,13 @@ public class MenuUI{
 					itemType = sc.nextInt();
                     MenuManager.editAlaCarteItem(itemID, name, description, price, itemType, restaurant.getMenu());
                     break;
-                
-                case 3: 
+				case 3:
+                    restaurant.getMenu().displayMenu();
+					System.out.println("Enter the itemID to be removed:");
+					itemID = sc.nextInt();
+                    MenuManager.removeAlaCarteItem(itemID, restaurant.getMenu());
+                    break;
+                case 4: 
 					System.out.println("Enter Set Package Name:");
 					sc.nextLine(); name = sc.nextLine();
 					System.out.println("Enter Set Package Description:");
@@ -77,7 +83,7 @@ public class MenuUI{
                     MenuManager.addSetPackage(name, description, price, list1, restaurant.getMenu());
                     break;
 
-                case 4:
+                case 5:
                     restaurant.getMenu().displaySetPackageMenu();
 
 					System.out.println("Enter the itemID to be edited:");
@@ -116,14 +122,15 @@ public class MenuUI{
 					
                     MenuManager.editSetPackage(itemID, name, description, price, list1, list2, restaurant.getMenu());
 					break;
-                case 5:
+                
+				case 6:
                     restaurant.getMenu().displayMenu();
 					System.out.println("Enter the itemID to be removed:");
 					itemID = sc.nextInt();
-                    MenuManager.removeItem(itemID, restaurant.getMenu());
+                    MenuManager.removeSetPackage(itemID, restaurant.getMenu());
                     break;
                 
-                case 6: System.out.println("Done editing, Back to Homepage...");
+                case 7: System.out.println("Done editing, Back to Homepage...");
 
             }
         }while(choice < 6);

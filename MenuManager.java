@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class MenuManager{
     public MenuManager(){}
     public static void addAlaCarteItem(String name, String description, double price, int itemType, Menu menu){
-        MenuItem newItem = new AlaCarteItem(name, description, price, itemType);
+        AlaCarteItem newItem = new AlaCarteItem(name, description, price, itemType);
         menu.addItem(newItem);
         newItem.displayMenuItem();
 	}
@@ -39,8 +39,8 @@ public class MenuManager{
         setPackageToBeEdited.displayMenuItem();
     }
 
-    public static void removeItem(int itemID, Menu menu){
-        MenuItem itemToBeRemoved = menu.getItem(itemID);
+    public static void removeAlaCarteItem(int itemID, Menu menu){
+        AlaCarteItem itemToBeRemoved = (AlaCarteItem) menu.getItem(itemID);
         menu.removeItem(itemToBeRemoved); 
 
         System.out.println("Menu Item " + itemToBeRemoved.getName() + " has been removed.");
@@ -53,6 +53,13 @@ public class MenuManager{
         }
         menu.addItem(newPackage);
         newPackage.displayMenuItem();
+    }
+
+    public static void removeSetPackage(int itemID, Menu menu){
+        SetPackage itemToBeRemoved = (SetPackage) menu.getItem(itemID);
+        menu.removeItem(itemToBeRemoved); 
+
+        System.out.println("Menu Item " + itemToBeRemoved.getName() + " has been removed.");
     }
 
 

@@ -6,27 +6,34 @@ import java.io.Serializable;
 
 public class ReservationManager{
 	
-	public static void createReservation(String checkInDateTime, Customer customer, int phone, ReservationArray reservationArray){
-		Reservation newReservation;
-
+	public static int createReservation(String checkInDateTime, Customer customer, int phone, ReservationArray reservationArray){
         LocalDateTime checkInTime = LocalDateTime.parse(checkInDateTime);
 
         customer.setPhone(phone);
 
-        System.out.println("Reservation ID: "+ reservationArray.addNewReservation(customer, checkInTime));
+        return reservationArray.addNewReservation(customer, checkInTime);
 	}
 
 	public static int checkReservation(int reservationID, ReservationArray reservationArray) {
         return reservationArray.checkReservation(reservationID);
 	}
 
-	public static void removeReservation(int reservationID, Restaurant restaurant) {
-		TableManager.releaseATable(restaurant.getReservationArray().removeReservation(reservationID), restaurant.getTableArray());
+	public static int removeReservation(int reservationID, Restaurant restaurant) {
+		int result = checkReservation(reservationID, restaurant.getReservationArray());
+		if(result == -1){
+			return -1;
+		}else if(result == -2){
+			return -2;
+		}else{
+			int tableID = restaurant.getReservationArray().removeReservation(reservationID);
+			TableManager.releaseATable(tableID, restaurant.getTableArray());
+			return tableID;
+		}
+		
 	}
 
-	
 	public static void updateReservationValidity(Restaurant restaurant){
-		restaurant.getReservationArray().updateReservationValidity(restaurant.getTableArray());
+		restaurant.getReservationArray().updateReservationValidity();
 	}
 
     public static boolean validateReservationTime(String checkInDateTime){

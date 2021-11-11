@@ -11,7 +11,13 @@ public class CustomerUI{
 		System.out.println("Enter number of pax:");
 		noOfPax = sc.nextInt();
 
-		CustomerManager.assignNewCustomerToTable(name, noOfPax, restaurant);
+		Customer customer = CustomerManager.assignNewCustomerToTable(name, noOfPax, restaurant);
+
+		if(customer == null){
+			System.out.println("Sorry! No suitable empty tables available!");
+		}else{
+			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + customer.getTable().getTableID());
+		}
         
 	}
 

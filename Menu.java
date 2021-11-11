@@ -61,14 +61,22 @@ public class Menu implements Serializable {
 		return menuItems.get(itemID);
 	}
 
-	public void addItem(MenuItem menuItem){
+	public void addItem(AlaCarteItem menuItem){
 		menuItems.add(noOfAlaCarteItems, menuItem);
 		noOfAlaCarteItems++;
 	}
 
-	public void removeItem(MenuItem menuItem){
+	public void removeItem(AlaCarteItem menuItem){
 		menuItems.remove(menuItem);
 		noOfAlaCarteItems--;
+	}
+
+	public void addItem(SetPackage menuItem){
+		menuItems.add(menuItem);
+	}
+
+	public void removeItem(SetPackage menuItem){
+		menuItems.remove(menuItem);
 	}
 
 }

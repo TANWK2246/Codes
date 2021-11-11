@@ -23,10 +23,6 @@ public class OrderManager{
 
         Order order = TableManager.getTable(tableID, restaurant.getTableArray()).getCustomer().getOrder();
 
-        if(order == null){
-            System.out.println("There is no order for this table yet.");return;
-        }
-
         order.printOrder();
 
     }

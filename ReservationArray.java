@@ -16,11 +16,11 @@ public class ReservationArray implements Serializable{
 		return this.reservations.size() - 1;
 	}
 
-	public void updateReservationValidity(TableArray tableArray){
+	public void updateReservationValidity(){
 		for(Reservation i : reservations){
 			Customer customer = i.updateValidity();
 			if(customer != null){
-				TableManager.releaseATable(customer.getTable().getTableID(), tableArray);
+				customer.getTable().setIsOccupied(false);
 			}
 		}
 	}

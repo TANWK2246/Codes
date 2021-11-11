@@ -60,7 +60,7 @@ public class App{
                     break;
                 case 4: 
                     ReservationManager.updateReservationValidity(restaurant);
-                    CustomerUI.NewCustomer(restaurant);
+                    CustomerUI.newCustomer(restaurant);
                     break;
                 case 5:
                     OrderUI.orderCreator(restaurant);

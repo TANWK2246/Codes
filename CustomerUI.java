@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CustomerUI{
-	public static void NewCustomer(Restaurant restaurant) {
+	public static void newCustomer(Restaurant restaurant) {
 		Scanner sc = new Scanner(System.in);
 		int noOfPax;
 		String name;

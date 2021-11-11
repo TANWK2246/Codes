@@ -20,8 +20,12 @@ public class OrderUI {
         System.out.println("Enter table ID:");
 		tableID = sc.nextInt();
         while(TableManager.validateCustomerAtTable(tableID, restaurant.getTableArray()) == false){
+            if(tableID == -1){
+                System.out.println("Returning to Home Page...");
+                return;
+            } 
             System.out.println("The table is empty");
-            System.out.println("Enter table ID:");
+            System.out.println("Enter table ID: (or -1 to go back Home Page)");
             tableID = sc.nextInt();
         }
 
@@ -51,13 +55,21 @@ public class OrderUI {
         System.out.println("Enter table ID:");
 		tableID = sc.nextInt();
         while(TableManager.validateCustomerAtTable(tableID, restaurant.getTableArray()) == false){
+            if(tableID == -1){
+                System.out.println("Returning to Home Page...");
+                return;
+            } 
             System.out.println("The table is empty");
-            System.out.println("Enter table ID:");
+            System.out.println("Enter table ID: (or -1 to go back Home Page)");
             tableID = sc.nextInt();
         }
         while(TableManager.validateOrderExists(tableID, restaurant.getTableArray()) == false){
+            if(tableID == -1){
+                System.out.println("Returning to Home Page...");
+                return;
+            } 
             System.out.println("The table has no order yet");
-            System.out.println("Enter table ID:");
+            System.out.println("Enter table ID: (or -1 to go back Home Page)");
             tableID = sc.nextInt();
         }
 
@@ -68,19 +80,25 @@ public class OrderUI {
         Scanner sc = new Scanner(System.in);
 
         int tableID, itemID, quantity, choice;
-        ArrayList<Integer> list1 = new ArrayList<>();
-        ArrayList<Integer> list2 = new ArrayList<>();
 
         System.out.println("Enter table ID:");
 		tableID = sc.nextInt();
         while(TableManager.validateCustomerAtTable(tableID, restaurant.getTableArray()) == false){
+            if(tableID == -1){
+                System.out.println("Returning to Home Page...");
+                return;
+            } 
             System.out.println("The table is empty");
-            System.out.println("Enter table ID:");
+            System.out.println("Enter table ID (or -1 to go back Home Page):");
             tableID = sc.nextInt();
         }
         while(TableManager.validateOrderExists(tableID, restaurant.getTableArray()) == false){
+            if(tableID == -1){
+                System.out.println("Returning to Home Page...");
+                return;
+            } 
             System.out.println("The table has no order yet");
-            System.out.println("Enter table ID:");
+            System.out.println("Enter table ID (or -1 to go back Home Page):");
             tableID = sc.nextInt();
         }
 

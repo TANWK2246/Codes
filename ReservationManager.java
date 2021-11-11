@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.Duration;
-import java.io.Serializable;
 
 public class ReservationManager{
 	
@@ -15,7 +12,16 @@ public class ReservationManager{
 	}
 
 	public static int checkReservation(int reservationID, ReservationArray reservationArray) {
-        return reservationArray.checkReservation(reservationID);
+        for(Reservation i: reservationArray.getReservations()){
+			if(i.getReservationID() == reservationID){
+				if(i.getValidity() == true){
+					return i.getCustomer().getTable().getTableID();
+				}else{
+					return -1;
+				}
+			}
+		}
+		return -2;
 	}
 
 	public static int removeReservation(int reservationID, Restaurant restaurant) {
@@ -32,8 +38,13 @@ public class ReservationManager{
 		
 	}
 
-	public static void updateReservationValidity(Restaurant restaurant){
-		restaurant.getReservationArray().updateReservationValidity();
+	public static void updateReservationValidity(ReservationArray reservationArray){
+		for(Reservation reservation : reservationArray.getReservations()){
+			Customer customer = reservation.updateValidity();
+			if(customer != null){
+				customer.getTable().setIsOccupied(false);
+			}
+		}
 	}
 
     public static boolean validateReservationTime(String checkInDateTime){

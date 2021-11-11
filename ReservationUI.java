@@ -1,8 +1,4 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.time.Duration;
-import java.io.Serializable;
 
 public class ReservationUI{
 

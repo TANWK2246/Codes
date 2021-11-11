@@ -59,7 +59,7 @@ public class App{
                     restaurant.getTableArray().showEmptyTables();
                     break;
                 case 4: 
-                    ReservationManager.updateReservationValidity(restaurant);
+                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
                     CustomerUI.newCustomer(restaurant);
                     break;
                 case 5:
@@ -72,11 +72,11 @@ public class App{
                     OrderUI.orderEditor(restaurant);
                     break;
                 case 8:
-                    ReservationManager.updateReservationValidity(restaurant);
+                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
                     ReservationUI.reservationCreator(restaurant);
                     break;
                 case 9:
-                    ReservationManager.updateReservationValidity(restaurant);
+                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
                     ReservationUI.reservationViewer(restaurant);
                     break;
                 case 10:

@@ -73,7 +73,7 @@ public class Testing{
                     restaurant.getBillManager().generateBill(restaurant.getTableManager(), restaurant.getSalesRevenueReport());
                     break;
                 case 12:
-                    restaurant.getSalesRevenueReport().printSalesRevenueReport();
+                    restaurant.getSalesRevenueReport().printSalesRevenueReport(restaurant.getBillManager().getBills());
                     break;
                 case 13: 
                     System.out.println("Program terminating...");

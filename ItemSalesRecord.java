@@ -24,7 +24,7 @@ public class ItemSalesRecord implements Serializable{
         this.records.add(pair);
     }
 
-    public void printRecord(LocalDate start, LocalDate end){
+    public double printRecord(LocalDate start, LocalDate end){
         int totalQuantity = 0;
         for(DayQuantityPair pair : records){
             if(start.compareTo(pair.getDay()) > 0) continue;
@@ -32,5 +32,6 @@ public class ItemSalesRecord implements Serializable{
             totalQuantity += pair.getQuantity();
         }
         System.out.println(this.menuItem.getName() + "\t" + totalQuantity + "\t" + totalQuantity*this.menuItem.getPrice());
+        return totalQuantity*this.menuItem.getPrice();
     }
 }

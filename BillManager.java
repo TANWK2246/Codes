@@ -34,7 +34,10 @@ public class BillManager implements Serializable{
 		tableManager.releaseATable(tableID);
 
 		salesRevenueReport.updateRecord(newBill);
+	}
 
+	public ArrayList<Bill> getBills(){
+		return this.bills;
 	}
 	
 }

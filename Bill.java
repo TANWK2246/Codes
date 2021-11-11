@@ -54,6 +54,18 @@ public class Bill implements Serializable{
 		System.out.println("=============================================");
 	}
 	
+	public double getDiscount() {
+		return this.discount;
+	}
+
+	public double getServiceCharge() {
+		return this.serviceCharge;
+	}
+
+	public double getGST() {
+		return this.GST;
+	}
+
 	public Customer getCustomer() {
 		return this.customer;
 	}

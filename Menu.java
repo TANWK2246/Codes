@@ -33,22 +33,31 @@ public class Menu implements Serializable {
 	}
 
 	public void displayMenu() {
-		System.out.println("Ala Carte Menu");
+		StringAlignUtils util = new StringAlignUtils(80, StringAlignUtils.Alignment.CENTER);
+    	System.out.println( util.format("Ala Carte Menu") );
+
 		displayAlaCarteMenu();
-		System.out.println("Set Package Menu");
+		System.out.println();
+		System.out.println(util.format("Set Package Menu"));
 		displaySetPackageMenu();
     }
 
 	public void displayAlaCarteMenu(){
+		String formatInfo = "%s\t%-20.20s %-30.30s %-9.9s\t\t%-10.10s\n";
+		System.out.format(formatInfo,"ID", "Name", "Description", "Price", "Type");
+
 		int counter = 0;
 		while(counter < noOfAlaCarteItems){
-			System.out.printf("%d\t", counter);
+			System.out.printf("%d\t ", counter);
 			menuItems.get(counter).displayMenuItem();
 			counter++;
 		}
 	}
 
 	public void displaySetPackageMenu(){
+		String formatInfo = "%s\t%-20.20s %-30.30s %-9.9s\t\n";
+		System.out.format(formatInfo,"ID", "Name", "Description", "Price");
+
 		int counter = noOfAlaCarteItems;
 		while(counter < menuItems.size()){
 			System.out.printf("%d\t", counter);

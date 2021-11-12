@@ -14,7 +14,7 @@ public class MenuManager{
         if(!name.equals("-1")) itemToBeEdited.setName(name);
         if(!description.equals("-1")) itemToBeEdited.setDescription(description);
         if(price != -1) itemToBeEdited.setPrice(price);
-        if(price != -1) itemToBeEdited.setItemType(itemType);
+        if(itemType != -1) itemToBeEdited.setItemType(itemType);
         
         System.out.println("AlaCarteItem " + itemToBeEdited.getName() + " has been edited.");
         itemToBeEdited.displayMenuItem();

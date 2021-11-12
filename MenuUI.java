@@ -6,7 +6,7 @@ public class MenuUI{
         int choice;
         String name, description;
         double price;
-        int itemType, itemID;
+        int itemType, itemID, setPackageID;
         ArrayList<Integer> list1 = new ArrayList<>();
         ArrayList<Integer> list2 = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -28,7 +28,6 @@ public class MenuUI{
 					System.out.println("Add Ala Carte Item");
 					sc.nextLine();
 					name = promptForMenuItemNameInput(restaurant.getMenu());
-					System.out.println(name);
 					description = promptForMenuItemDescriptionInput();
 					price = promptForMenuItemPriceInput();
 					itemType = promptForMenuItemTypeInput();
@@ -89,8 +88,8 @@ public class MenuUI{
                     restaurant.getMenu().displaySetPackageMenu();
 
 					System.out.println("Enter ItemID to edit it: (-1) to go back to editing panel");
-					itemID = promptForSetPackageIDInput(restaurant.getMenu());
-					if(itemID == -1){
+					setPackageID = promptForSetPackageIDInput(restaurant.getMenu());
+					if(setPackageID == -1){
 						System.out.println("Going back to editing panel...");
 						continue;
 					}
@@ -120,7 +119,7 @@ public class MenuUI{
 						itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
 					}
 					
-                    MenuManager.editSetPackage(itemID, name, description, price, list1, list2, restaurant.getMenu());
+                    MenuManager.editSetPackage(setPackageID, name, description, price, list1, list2, restaurant.getMenu());
 					break;
 				case 6:
 					System.out.println("Remove Set Package");

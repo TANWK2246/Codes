@@ -13,7 +13,7 @@ public abstract class MenuItem implements Serializable{
 		this.price = price;
 	}
 
-	public void displayMenuItem(){}
+	public abstract void displayMenuItem();
 
 	public String getName() {
 		return this.name;

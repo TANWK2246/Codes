@@ -10,7 +10,7 @@ public class ReservationUI{
 		name = CustomerUI.promptForCustomerNameInput();
 		noOfPax = CustomerUI.promptForNoOfPaxInput();
 
-		sc.nextLine();
+		
 		checkInDateTime = promptForCheckInTimeInput();
 		if(checkInDateTime.equals("-1")){
 			System.out.println("Action cancelled. Going back to Home Page...");

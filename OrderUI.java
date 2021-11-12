@@ -147,7 +147,7 @@ public class OrderUI {
 				System.out.println("Enter table ID:");
 				input = sc.nextInt();sc.nextLine();
                 if(input == -1) break;
-                if(TableManager.validateCustomerAtTable(input, tableArray) == true){
+                if(TableManager.validateCustomerAtTable(input, tableArray) == false){
                     System.out.println("The table is not occupied by customer.");
                     continue;
                 }
@@ -155,6 +155,7 @@ public class OrderUI {
                     System.out.println("The table has no order yet. Please create an order first.");
                     return -1;
                 }
+                return input;
 			}catch (Exception e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();

@@ -19,10 +19,13 @@ public class SetPackage extends MenuItem {
 	}
 
 	public void displayMenuItem(){
-		System.out.print(super.getName() + "\t" + super.getDescription()+ "\t$" + String.format("%,.2f", super.getPrice()));
-		System.out.println();
+		String formatInfo = "%-20.20s %-30.30s S$ %7.2f\t\n";
+		System.out.format(formatInfo, super.getName(), super.getDescription(), super.getPrice());
+
+		formatInfo = "\t%-20.20s %-30.30s\n";
 		for (AlaCarteItem i : items) {
-			System.out.println("\t" + i.getName() + "\t" + i.getDescription());
+			System.out.format(formatInfo, i.getName(), i.getDescription());
+			
 		}	
 	};
 }

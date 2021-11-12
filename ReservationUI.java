@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.DateTimeException;
 import java.util.InputMismatchException;
 
 public class ReservationUI{
@@ -83,7 +84,7 @@ public class ReservationUI{
 					continue;
 				}
 				break;
-			}catch (InputMismatchException e){
+			}catch (DateTimeException e){
 				System.out.println("Invalid format. Please enter again!");
 			}
 		}

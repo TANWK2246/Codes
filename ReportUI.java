@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class ReportUI{
@@ -25,7 +26,7 @@ public class ReportUI{
 				input = sc.nextLine();
                 dateInput = LocalDate.parse(input);
 				break;
-			}catch (Exception e){
+			}catch (DateTimeParseException e){
 				System.out.println("Invalid date format. Please enter again!");
 			}
 		}

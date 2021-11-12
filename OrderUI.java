@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class OrderUI {
     public static void orderCreator(Restaurant restaurant){
@@ -128,14 +129,17 @@ public class OrderUI {
 				System.out.println("Enter table ID:");
 				input = sc.nextInt();sc.nextLine();
                 if(input == -1)break;
+                
                 if(TableManager.validateCustomerAtTable(input, tableArray) == true) break;
                 System.out.println("The table is not occupied by customer. Try again or enter (-1) to go back.");
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
-			}
+			}catch (IndexOutOfBoundsException e){
+                System.out.println("Invalid Table ID. Please enter again!");
+				sc.nextLine();
+            }
 		}
-        
 		return input;
 	}
 
@@ -156,10 +160,13 @@ public class OrderUI {
                     continue;
                 }
                 return input;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
-			}
+			}catch (IndexOutOfBoundsException e){
+                System.out.println("Invalid Table ID. Please enter again!");
+				sc.nextLine();
+            }
 		}
         
 		return input;
@@ -178,7 +185,7 @@ public class OrderUI {
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}
@@ -196,7 +203,7 @@ public class OrderUI {
 				input = sc.nextInt();sc.nextLine();
                 if(input >= 0 & input < noOfItemOrder) break;
                 System.out.println("Invalid item order ID.");
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}
@@ -214,7 +221,7 @@ public class OrderUI {
 				input = sc.nextInt();sc.nextLine();
                 if(input > 0) break;
                 System.out.println("Please enter a positive integer.");
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}

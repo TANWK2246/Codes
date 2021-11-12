@@ -19,6 +19,7 @@ public class StaffArray implements Serializable{
 		return null;
 	}
 
+
 	public boolean checkStaffID(int staffID){
 		Staff staff = this.getStaff(staffID);
 		if(staff == null) return false;

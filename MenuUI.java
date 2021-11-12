@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class MenuUI{
     public static void menuEditor(Restaurant restaurant){
@@ -155,7 +156,7 @@ public class MenuUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid name. Please enter again!");
 			}
 		}
@@ -172,7 +173,7 @@ public class MenuUI{
 				System.out.println("Enter Item/Package Description:");
 				input = sc.nextLine();
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid description. Please enter again!");
 				
 			}
@@ -194,7 +195,7 @@ public class MenuUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid number. Please enter again!");
 				sc.nextLine();
 			}
@@ -215,7 +216,7 @@ public class MenuUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}
@@ -237,7 +238,7 @@ public class MenuUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}
@@ -259,7 +260,7 @@ public class MenuUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}

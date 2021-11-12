@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class ReservationUI{
 
@@ -82,7 +83,7 @@ public class ReservationUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid format. Please enter again!");
 			}
 		}
@@ -98,7 +99,7 @@ public class ReservationUI{
 				System.out.println("Enter Phone Number:");
 				input = sc.nextInt();sc.nextLine();
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}
@@ -114,7 +115,7 @@ public class ReservationUI{
 				System.out.println("Enter Reservation ID:");
 				input = sc.nextInt();sc.nextLine();
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.InputMismatchException;
 
 public class App{
     public static void main(String[] args)
@@ -98,7 +99,7 @@ public class App{
                         System.out.println("Invalid option. Please enter again!");
                         break;
                 }
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid format. Please enter again!");
                 sc.nextLine();
 			}

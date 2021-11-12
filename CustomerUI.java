@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class CustomerUI{
 	public static void newCustomer(Restaurant restaurant) {
@@ -28,7 +29,7 @@ public class CustomerUI{
 				System.out.println("Enter Customer Name:");
 				input = sc.nextLine();
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid name. Please enter again!");
 			}
 		}
@@ -48,7 +49,7 @@ public class CustomerUI{
 					continue;
 				}
 				break;
-			}catch (Exception e){
+			}catch (InputMismatchException e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
 			}

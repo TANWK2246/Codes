@@ -16,12 +16,12 @@ public class ReportManager{
         }
     }
 
-    public static void printSalesRevenueReport(LocalDate startDate, LocalDate endDate, Restaurant restaurant){
+    public static void printSalesRevenueReport(LocalDate startDate, LocalDate endDate, BillArray billArray, SalesRevenueReport report){
         System.out.println("Sales Revenue Report from " + startDate + " to " + endDate);
 
         double totalSales = 0;
 
-        for(ItemSalesRecord record : restaurant.getSalesRevenueReport().getRecords()){
+        for(ItemSalesRecord record : report.getRecords()){
             totalSales += record.printRecord(startDate, endDate);
         }
 
@@ -29,7 +29,7 @@ public class ReportManager{
 
         double totalDiscount = 0, totalGST = 0, totalServiceCharge = 0;
 
-        for(Bill bill : restaurant.getBillArray().getBills()){
+        for(Bill bill : billArray.getBills()){
             if(startDate.compareTo(bill.getCheckOutTime().toLocalDate()) > 0) continue;
             if(endDate.compareTo(bill.getCheckOutTime().toLocalDate()) < 0)break;
             totalDiscount += bill.getDiscount();

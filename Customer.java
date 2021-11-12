@@ -7,7 +7,6 @@ public class Customer implements Serializable{
 	private int phone;
 	private Order order;
 	private Table table;
-	private Reservation reservation;
 
 	public Customer(){}
 
@@ -28,28 +27,12 @@ public class Customer implements Serializable{
 		return this.name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getNoOfPax() {
-		return this.noOfPax;
-	}
-
-	public void setNoOfPax(int noOfPax) {
-		this.noOfPax = noOfPax;
-	}
-
 	public boolean isHasMembership() {
 		return this.hasMembership;
 	}
 
 	public void setHasMembership(boolean hasMembership) {
 		this.hasMembership = hasMembership;
-	}
-
-	public int getPhone() {
-		return this.phone;
 	}
 
 	public void setPhone(int phone) {
@@ -68,16 +51,13 @@ public class Customer implements Serializable{
 		return this.table;
 	}
 
-	public void setTable(Table table) {
-		this.table = table;
+	public int getNoOfPax() {
+		return this.noOfPax;
 	}
 
-	public Reservation getReservation() {
-		return this.reservation;
+	public int getPhone() {
+		return this.phone;
 	}
 
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
 
 }

@@ -79,4 +79,12 @@ public class Menu implements Serializable {
 		menuItems.remove(menuItem);
 	}
 
+	public ArrayList<MenuItem> getMenuItems() {
+		return this.menuItems;
+	}
+
+	public int getNoOfAlaCarteItems() {
+		return this.noOfAlaCarteItems;
+	}
+
 }

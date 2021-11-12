@@ -10,7 +10,6 @@ public class ReservationArray implements Serializable{
 	public int addNewReservation(Customer customer, LocalDateTime checkInTime){
 		Reservation newReservation = new Reservation(this.reservations.size(), customer, checkInTime);
 		this.reservations.add(newReservation);
-		customer.setReservation(newReservation);
 		return this.reservations.size() - 1;
 	}
 

@@ -47,8 +47,8 @@ public class Testing{
                     restaurant.getTableArray().showEmptyTables();
                     break;
                 case 4: 
-                    // restaurant.getReservationManager().updateReservationValidity(restaurant.getTableManager());
-                    CustomerUI.NewCustomer(restaurant);
+                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
+                    CustomerUI.newCustomer(restaurant);
                     break;
                 case 5:
                     OrderUI.orderCreator(restaurant);
@@ -59,29 +59,30 @@ public class Testing{
                 case 7:
                     OrderUI.orderEditor(restaurant);
                     break;
-                // case 8:
-                //     restaurant.getReservationManager().createReservation(restaurant.getTableManager(), restaurant.getCustomerManager());
-                //     break;
-                // case 9:
-                //     restaurant.getReservationManager().updateReservationValidity(restaurant.getTableManager());
-                //     restaurant.getReservationManager().checkReservation();
-                //     break;
-                // case 10:
-                //     restaurant.getReservationManager().removeReservation(restaurant.getTableManager());
-                //     break;
+                case 8:
+                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
+                    ReservationUI.reservationCreator(restaurant);
+                    break;
+                case 9:
+                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
+                    ReservationUI.reservationViewer(restaurant);
+                    break;
+                case 10:
+                    ReservationUI.reservationRemover(restaurant);
+                    break;
                 case 11:
-                    BillUI.BillGenerator(restaurant);
+                    BillUI.billGenerator(restaurant);
                     break;
                 case 12:
-                    // restaurant.getSalesRevenueReport().printSalesRevenueReport(restaurant.getBillManager().getBills());
+                    ReportUI.reportViewer(restaurant);
                     break;
                 case 13: 
-                    System.out.println("Program terminating...");
+                    System.out.println("System terminating...");
                     break;
             }
 
         }while (choice < 13);
-
+        sc.close();
         try {
             FileOutputStream f = new FileOutputStream(new File("restaurant.txt"));
 			ObjectOutputStream o = new ObjectOutputStream(f);

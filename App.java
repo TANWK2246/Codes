@@ -29,6 +29,8 @@ public class App{
 			e.printStackTrace();
 		}
 
+        System.out.println("Restaurant Management System");
+
         int choice;
         Scanner sc = new Scanner(System.in);
         do{
@@ -45,7 +47,7 @@ public class App{
             System.out.println("10: Remove Reservation Booking");
             System.out.println("11: Make Payment / Print Order Invoice");
             System.out.println("12: Print Sales Revenue Report");
-            System.out.println("13: Terminate the Programme");
+            System.out.println("13: Terminate the System");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -83,18 +85,18 @@ public class App{
                     ReservationUI.reservationRemover(restaurant);
                     break;
                 case 11:
-                    BillUI.BillGenerator(restaurant);
+                    BillUI.billGenerator(restaurant);
                     break;
                 case 12:
-                    ReportUI.ReportViewer(restaurant);
+                    ReportUI.reportViewer(restaurant);
                     break;
                 case 13: 
-                    System.out.println("Program terminating...");
+                    System.out.println("System terminating...");
                     break;
             }
 
         }while (choice < 13);
-
+        sc.close();
         try {
             FileOutputStream f = new FileOutputStream(new File("restaurant.txt"));
 			ObjectOutputStream o = new ObjectOutputStream(f);
@@ -104,9 +106,6 @@ public class App{
 
 			o.close();
 			f.close();
-
-            FileInputStream fi = new FileInputStream(new File("restaurant.txt"));
-			ObjectInputStream oi = new ObjectInputStream(fi);
 
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");

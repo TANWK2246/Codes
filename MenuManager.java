@@ -62,5 +62,26 @@ public class MenuManager{
         System.out.println("Menu Item " + itemToBeRemoved.getName() + " has been removed.");
     }
 
+    public static boolean hasDuplicateItemName(String name, Menu menu){
+        for(MenuItem menuItem : menu.getMenuItems()){
+            if(name.equals(menuItem.getName())) return true;
+        }
+        return false;
+    }
+
+    public static boolean validateAlaCarteItemIDInput(int itemID, Menu menu){
+        if(itemID >= 0 & itemID < menu.getNoOfAlaCarteItems()) return true;
+        return false;
+    }
+
+    public static boolean validateSetPackageIDInput(int itemID, Menu menu){
+        if(itemID >= menu.getNoOfAlaCarteItems() & itemID < menu.getMenuItems().size()) return true;
+        return false;
+    }
+
+    public static boolean validateMenuItemIDInput(int itemID, Menu menu){
+        if(itemID >= 0 & itemID < menu.getMenuItems().size()) return true;
+        return false;
+    }
 
 }

@@ -24,17 +24,9 @@ public class AlaCarteItem extends MenuItem{
 	}
 
 	public void displayMenuItem(){
-		super.displayMenuItem();
+		System.out.print(super.getName() + "\t" + super.getDescription()+ "\t$" + String.format("%,.2f", super.getPrice()));
 		System.out.println("\t" + this.itemType);
 	};
-
-	public ItemType getItemType() {
-		return this.itemType;
-	}
-
-	public void setItemType(ItemType itemType) {
-		this.itemType = itemType;
-	}
 
 	public void setItemType(int itemType){
 		switch(itemType){

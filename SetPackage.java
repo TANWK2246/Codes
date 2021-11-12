@@ -19,7 +19,7 @@ public class SetPackage extends MenuItem {
 	}
 
 	public void displayMenuItem(){
-		super.displayMenuItem();
+		System.out.print(super.getName() + "\t" + super.getDescription()+ "\t$" + String.format("%,.2f", super.getPrice()));
 		System.out.println();
 		for (AlaCarteItem i : items) {
 			System.out.println("\t" + i.getName() + "\t" + i.getDescription());

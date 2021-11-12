@@ -23,10 +23,6 @@ public class ItemOrder implements Serializable{
 		return this.item;
 	}
 
-	public void setItem(MenuItem item) {
-		this.item = item;
-	}
-
 	public double calculateSubtotal() {
 		return this.item.getPrice() * this.quantity;
 	}

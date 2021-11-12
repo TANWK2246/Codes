@@ -2,23 +2,59 @@ import java.util.Scanner;
 
 public class CustomerUI{
 	public static void newCustomer(Restaurant restaurant) {
-		Scanner sc = new Scanner(System.in);
 		int noOfPax;
 		String name;
 
-		System.out.println("Enter Customer Name:");
-		name = sc.nextLine();
-		System.out.println("Enter number of pax:");
-		noOfPax = sc.nextInt();
+		System.out.println("Enter customer details:");
+		name = promptForCustomerNameInput();
+		noOfPax = promptForNoOfPaxInput();
 
-		Customer customer = CustomerManager.assignNewCustomerToTable(name, noOfPax, restaurant);
+		Customer customer = CustomerManager.assignNewCustomerToTable(name, noOfPax, restaurant.getTableArray(), restaurant.getCustomerArray());
 
 		if(customer == null){
 			System.out.println("Sorry! No suitable empty tables available!");
+			System.out.println("Going back to Home Page...");
 		}else{
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + customer.getTable().getTableID());
 		}
-        
+	}
+
+	public static String promptForCustomerNameInput(){
+		Scanner sc = new Scanner(System.in);
+		String input;
+
+		while(true){
+			try{
+				System.out.println("Enter Customer Name:");
+				input = sc.nextLine();
+				break;
+			}catch (Exception e){
+				System.out.println("Invalid name. Please enter again!");
+			}
+		}
+		sc.close();
+		return input;
+	}
+
+	public static int promptForNoOfPaxInput() {
+		Scanner sc = new Scanner(System.in);
+		int input;
+		while(true){
+			try{
+				System.out.println("Enter Number of Pax:");
+				input = sc.nextInt();sc.nextLine();
+				if(input <= 0 | input > 10){
+					System.out.println("Please enter a number from 0 to 10.");
+					continue;
+				}
+				break;
+			}catch (Exception e){
+				System.out.println("Invalid integer. Please enter again!");
+				sc.nextLine();
+			}
+		}
+		sc.close();
+		return input;
 	}
 
 }

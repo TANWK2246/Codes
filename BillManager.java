@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.Serializable;
-
 public class BillManager{
-	public static void generateBill(int tableID, int membership, Restaurant restaurant) {
+	public static void generateBill(int tableID, int membership, TableArray tableArray, BillArray billArray, SalesRevenueReport report) {
 		Bill newBill;
 
-		Customer customer = TableManager.getTable(tableID, restaurant.getTableArray()).getCustomer();
+		Customer customer = TableManager.getTable(tableID, tableArray).getCustomer();
 
 		if(membership == 1){
 			customer.setHasMembership(true);
@@ -14,14 +10,14 @@ public class BillManager{
 			customer.setHasMembership(false);
 		}
 
-		newBill = new Bill(restaurant.getBillArray().getBills().size(), customer);
-		restaurant.getBillArray().addBill(newBill);
+		newBill = new Bill(billArray.getBills().size(), customer);
+		billArray.addBill(newBill);
 
 		newBill.printOrderInvoice();
 
-		TableManager.releaseATable(tableID, restaurant.getTableArray());
+		TableManager.releaseATable(tableID, tableArray);
 
-		// salesRevenueReport.updateRecord(newBill);
+		ReportManager.updateRecord(newBill, report);
 	}
 	
 }

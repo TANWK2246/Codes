@@ -1,24 +1,14 @@
 import java.util.ArrayList;
-import java.time.LocalDateTime;
 import java.io.Serializable;
 
 public class Order implements Serializable{
-	private LocalDateTime createdAt;
 	private ArrayList<ItemOrder> itemOrder = new ArrayList<ItemOrder>();
-
-	public ArrayList<ItemOrder> getItemOrder() {
-		return this.itemOrder;
-	}
-
 	private Staff created_by;
-	private Customer customer;
 
 	public Order(){}
 
-	public Order(Staff staff, Customer customer){
-		this.createdAt = LocalDateTime.now();  
+	public Order(Staff staff, Customer customer){ 
 		this.created_by = staff;
-		this.customer = customer;
 	}
 
 	public void addItemOrder(ItemOrder itemOrder){
@@ -33,12 +23,13 @@ public class Order implements Serializable{
 		this.itemOrder.get(itemID).setQuantity(quantity);
 	}
 
-	public void printOrder(){
+	public int printOrder(){
 		int counter = 0;
 		for(ItemOrder i : itemOrder){
 			System.out.println(counter + "\t" + i.getItem().getName() + "\t" + i.getQuantity());
 			counter++;
 		}
+		return counter;
 	}
 
 	public void printOrderWithSubtotal(){
@@ -57,5 +48,9 @@ public class Order implements Serializable{
 
 	public Staff getCreated_by() {
 		return this.created_by;
+	}
+
+	public ArrayList<ItemOrder> getItemOrder() {
+		return this.itemOrder;
 	}
 }

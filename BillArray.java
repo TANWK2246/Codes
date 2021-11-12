@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.Serializable;
 
 public class BillArray implements Serializable{

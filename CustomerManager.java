@@ -1,19 +1,19 @@
 public class CustomerManager{
 	public CustomerManager(){}
 
-	public static Customer assignNewCustomerToTable(String name, int noOfPax, Restaurant restaurant) {
-		int tableID = TableManager.tableFinder(noOfPax, restaurant.getTableArray());
+	public static Customer assignNewCustomerToTable(String name, int noOfPax, TableArray tableArray, CustomerArray customerArray) {
+		int tableID = TableManager.tableFinder(noOfPax, tableArray);
 		
 		if(tableID == -1){
 			return null;
 		}else{
-			TableManager.bookATable(tableID, restaurant.getTableArray());
+			TableManager.bookATable(tableID, tableArray);
 
-			Customer customer = new Customer(name, noOfPax, restaurant.getTableArray().getTable(tableID));
+			Customer customer = new Customer(name, noOfPax, tableArray.getTable(tableID));
 
-			restaurant.getTableArray().getTable(tableID).setCustomer(customer);
+			tableArray.getTable(tableID).setCustomer(customer);
 
-			restaurant.getCustomerArray().addCustomer(customer);
+			customerArray.addCustomer(customer);
 
 			return customer;
 		}

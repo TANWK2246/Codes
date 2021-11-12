@@ -7,28 +7,23 @@ public class ReservationUI{
 		int noOfPax, phone;
 		String name, checkInDateTime;
 
-		System.out.println("Enter Customer Name:");
-		name = sc.nextLine();
-		System.out.println("Enter Number of pax:");
-		noOfPax = sc.nextInt();
+		name = CustomerUI.promptForCustomerNameInput();
+		noOfPax = CustomerUI.promptForNoOfPaxInput();
 
 		sc.nextLine();
-		System.out.println("Enter Check In Time: (YYYY-MM-DDTHH:MM:SS) (Enter -1 to cancel)");
-		checkInDateTime = sc.nextLine();
-		while(ReservationManager.validateReservationTime(checkInDateTime) == false){
-			System.out.println("Can only make reservation 1 hour in advance!");
-			System.out.println("Enter Check In Time: (YYYY-MM-DDTHH:MM:SS) ");
-			checkInDateTime = sc.nextLine();
-			if(checkInDateTime.equals("-1")){
-				System.out.println("Action cancelled. Going back to Home Page.");
-				return;
-			}
+		checkInDateTime = promptForCheckInTimeInput();
+		if(checkInDateTime.equals("-1")){
+			System.out.println("Action cancelled. Going back to Home Page...");
+			sc.close();
+			return;
 		}
 		
-		Customer customer = CustomerManager.assignNewCustomerToTable(name, noOfPax, restaurant);
+		Customer customer = CustomerManager.assignNewCustomerToTable(name, noOfPax, restaurant.getTableArray(), restaurant.getCustomerArray());
 
 		if(customer == null){
 			System.out.println("Sorry! No suitable empty tables available!");
+			System.out.println("Going back to Home Page...");
+			sc.close();
 			return;
 		}else{
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + customer.getTable().getTableID());
@@ -38,6 +33,7 @@ public class ReservationUI{
 		phone = sc.nextInt();
 
 		System.out.println("ReservationID: " + ReservationManager.createReservation(checkInDateTime, customer, phone, restaurant.getReservationArray()));
+		sc.close();
 	}
 
 	public static void reservationViewer(Restaurant restaurant){
@@ -48,12 +44,13 @@ public class ReservationUI{
 
 		int result = ReservationManager.checkReservation(reservationID, restaurant.getReservationArray());
 		if(result == -1){
-			System.out.println("Reservation removed");
+			System.out.println("Reservation had been removed");
 		}else if(result == -2){
 			System.out.println("Reservation not found");
 		}else{
 			System.out.println("Reservation found. Table number: " + result);
 		}
+		sc.close();
 	}
 
 	public static void reservationRemover(Restaurant restaurant){
@@ -70,5 +67,29 @@ public class ReservationUI{
 		}else{
 			System.out.println("Reservation removed. Table number: " + result + " is released.");
 		}
+		sc.close();
 	}
+
+	public static String promptForCheckInTimeInput(){
+		Scanner sc = new Scanner(System.in);
+		String input;
+
+		while(true){
+			try{
+				System.out.println("Enter Check In Time: (YYYY-MM-DDTHH:MM:SS) (-1) to go back to Home Page");
+				input = sc.nextLine();
+				if(input.equals("-1")) return input;
+				if(ReservationManager.validateReservationTime(input) == false){
+					System.out.println("Can only make reservation at least 1 hour in advance or within operating hour!");
+					continue;
+				}
+				break;
+			}catch (Exception e){
+				System.out.println("Invalid format. Please enter again!");
+			}
+		}
+		sc.close();
+		return input;
+	}
+
 }

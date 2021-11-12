@@ -24,14 +24,18 @@ public class TableArray implements Serializable{
     }
 
     public void showEmptyTables() {
-        int counter = 0;
+        int counter = 0, noOfEmptyTables = 0;
 		for (Table i : this.tables) {
             if(i.getIsOccupied() == false){
                 System.out.printf("TableID: %d\t", counter);
                 System.out.println("Capacity: " + i.getTableCapacity());
+                noOfEmptyTables++;
             }
 			counter++;
 		}
+        if(noOfEmptyTables == 0){
+            System.out.println("All tables are occupied!");
+        }
 	}
 
     public int findAnEmptyTable(int noOfPax) {

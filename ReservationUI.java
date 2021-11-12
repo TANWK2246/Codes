@@ -29,8 +29,7 @@ public class ReservationUI{
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + customer.getTable().getTableID());
 		}
 		
-		System.out.println("Enter phone number:");
-		phone = sc.nextInt();
+		phone =promptForPhoneInput();
 
 		System.out.println("ReservationID: " + ReservationManager.createReservation(checkInDateTime, customer, phone, restaurant.getReservationArray()));
 		
@@ -39,8 +38,8 @@ public class ReservationUI{
 	public static void reservationViewer(Restaurant restaurant){
 		int reservationID;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Reservation ID to check:");
-		reservationID = sc.nextInt();
+		System.out.println("Check Reservation");
+		reservationID = promptForReservationIDInput();
 
 		int result = ReservationManager.checkReservation(reservationID, restaurant.getReservationArray());
 		if(result == -1){
@@ -50,14 +49,13 @@ public class ReservationUI{
 		}else{
 			System.out.println("Reservation found. Table number: " + result);
 		}
-		
 	}
 
 	public static void reservationRemover(Restaurant restaurant){
 		int reservationID;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Reservation ID to remove:");
-		reservationID = sc.nextInt();
+		System.out.println("Remove Reservation");
+		reservationID = promptForReservationIDInput();
 
 		int result = ReservationManager.removeReservation(reservationID, restaurant);
 		if(result == -1){
@@ -89,6 +87,38 @@ public class ReservationUI{
 			}
 		}
 		
+		return input;
+	}
+
+	public static int promptForPhoneInput() {
+		Scanner sc = new Scanner(System.in);
+		int input;
+		while(true){
+			try{
+				System.out.println("Enter Phone Number:");
+				input = sc.nextInt();sc.nextLine();
+				break;
+			}catch (Exception e){
+				System.out.println("Invalid integer. Please enter again!");
+				sc.nextLine();
+			}
+		}
+		return input;
+	}
+
+	public static int promptForReservationIDInput() {
+		Scanner sc = new Scanner(System.in);
+		int input;
+		while(true){
+			try{
+				System.out.println("Enter Reservation ID:");
+				input = sc.nextInt();sc.nextLine();
+				break;
+			}catch (Exception e){
+				System.out.println("Invalid integer. Please enter again!");
+				sc.nextLine();
+			}
+		}
 		return input;
 	}
 

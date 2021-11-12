@@ -31,71 +31,78 @@ public class App{
 
         System.out.println("Restaurant Management System");
 
-        int choice;
+        int choice = 0;
         Scanner sc = new Scanner(System.in);
         do{
-            System.out.println("Perform the following methods:");
-            System.out.println("1: Display Menu");
-            System.out.println("2: Edit Menu");
-            System.out.println("3: Display Empty Tables");
-            System.out.println("4: Assign New Customer");
-            System.out.println("5: Create Order");
-            System.out.println("6: View Order");
-            System.out.println("7: Edit Order");
-            System.out.println("8: Create Reservation Booking");
-            System.out.println("9: Check Reservation Booking");
-            System.out.println("10: Remove Reservation Booking");
-            System.out.println("11: Make Payment / Print Order Invoice");
-            System.out.println("12: Print Sales Revenue Report");
-            System.out.println("13: Terminate the System");
-            choice = sc.nextInt();
+            try{
+				System.out.println("Perform the following methods:");
+                System.out.println("1: Display Menu");
+                System.out.println("2: Edit Menu");
+                System.out.println("3: Display Empty Tables");
+                System.out.println("4: Assign New Customer");
+                System.out.println("5: Create Order");
+                System.out.println("6: View Order");
+                System.out.println("7: Edit Order");
+                System.out.println("8: Create Reservation Booking");
+                System.out.println("9: Check Reservation Booking");
+                System.out.println("10: Remove Reservation Booking");
+                System.out.println("11: Make Payment / Print Order Invoice");
+                System.out.println("12: Print Sales Revenue Report");
+                System.out.println("13: Terminate the System");
+                choice = sc.nextInt();
 
-            switch (choice) {
-                case 1:
-                    restaurant.getMenu().displayMenu();
-                    break;
-                case 2: 
-                    MenuUI.menuEditor(restaurant);
-                    break;
-                case 3:
-                    restaurant.getTableArray().showEmptyTables();
-                    break;
-                case 4: 
-                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
-                    CustomerUI.newCustomer(restaurant);
-                    break;
-                case 5:
-                    OrderUI.orderCreator(restaurant);
-                    break;
-                case 6:
-                    OrderUI.orderViewer(restaurant);
-                    break;
-                case 7:
-                    OrderUI.orderEditor(restaurant);
-                    break;
-                case 8:
-                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
-                    ReservationUI.reservationCreator(restaurant);
-                    break;
-                case 9:
-                    ReservationManager.updateReservationValidity(restaurant.getReservationArray());
-                    ReservationUI.reservationViewer(restaurant);
-                    break;
-                case 10:
-                    ReservationUI.reservationRemover(restaurant);
-                    break;
-                case 11:
-                    BillUI.billGenerator(restaurant);
-                    break;
-                case 12:
-                    ReportUI.reportViewer(restaurant);
-                    break;
-                case 13: 
-                    System.out.println("System terminating...");
-                    break;
-            }
-
-        }while (choice < 13);
+                switch (choice) {
+                    case 1:
+                        restaurant.getMenu().displayMenu();
+                        break;
+                    case 2: 
+                        MenuUI.menuEditor(restaurant);
+                        break;
+                    case 3:
+                        restaurant.getTableArray().showEmptyTables();
+                        break;
+                    case 4: 
+                        ReservationManager.updateReservationValidity(restaurant.getReservationArray());
+                        CustomerUI.newCustomer(restaurant);
+                        break;
+                    case 5:
+                        OrderUI.orderCreator(restaurant);
+                        break;
+                    case 6:
+                        OrderUI.orderViewer(restaurant);
+                        break;
+                    case 7:
+                        OrderUI.orderEditor(restaurant);
+                        break;
+                    case 8:
+                        ReservationManager.updateReservationValidity(restaurant.getReservationArray());
+                        ReservationUI.reservationCreator(restaurant);
+                        break;
+                    case 9:
+                        ReservationManager.updateReservationValidity(restaurant.getReservationArray());
+                        ReservationUI.reservationViewer(restaurant);
+                        break;
+                    case 10:
+                        ReservationUI.reservationRemover(restaurant);
+                        break;
+                    case 11:
+                        BillUI.billGenerator(restaurant);
+                        break;
+                    case 12:
+                        ReportUI.reportViewer(restaurant);
+                        break;
+                    case 13: 
+                        System.out.println("System terminating...");
+                        break;
+                    default:
+                        System.out.println("Invalid option. Please enter again!");
+                        break;
+                }
+			}catch (Exception e){
+				System.out.println("Invalid format. Please enter again!");
+                sc.nextLine();
+			}
+        }while (choice != 13);
         
         try {
             FileOutputStream f = new FileOutputStream(new File("restaurant.txt"));
@@ -112,5 +119,7 @@ public class App{
 		} catch (IOException e) {
 			System.out.println("Error initializing stream");
 		}
+
+        System.out.println("Saving restaurant data....");
     }
 }

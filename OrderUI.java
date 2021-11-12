@@ -153,7 +153,7 @@ public class OrderUI {
                 }
                 if(TableManager.validateOrderExists(input, tableArray) == false){
                     System.out.println("The table has no order yet. Please create an order first. Try again or enter (-1) to go back.");
-                    return -1;
+                    continue;
                 }
                 return input;
 			}catch (Exception e){

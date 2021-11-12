@@ -36,7 +36,7 @@ public class OrderUI {
         Scanner sc = new Scanner(System.in);
         int tableID;
 
-        tableID = promptForWithCustomerTableIDInput(restaurant.getTableArray());
+        tableID = promptForWithOrderTableIDInput(restaurant.getTableArray());
         if(tableID == -1){
             System.out.println("Going back to home page...");
             
@@ -52,7 +52,7 @@ public class OrderUI {
 
         int tableID, itemID, quantity, choice, noOfItemOrder;
 
-        tableID = promptForWithCustomerTableIDInput(restaurant.getTableArray());
+        tableID = promptForWithOrderTableIDInput(restaurant.getTableArray());
         if(tableID == -1){
             System.out.println("Going back to home page...");
             
@@ -127,9 +127,9 @@ public class OrderUI {
 			try{
 				System.out.println("Enter table ID:");
 				input = sc.nextInt();sc.nextLine();
-                if(TableManager.validateCustomerAtTable(input, tableArray) == true | input == -1) 
-                break;
-                System.out.println("The table is not occupied by customer.");
+                if(input == -1)break;
+                if(TableManager.validateCustomerAtTable(input, tableArray) == true) break;
+                System.out.println("The table is not occupied by customer. Try again or enter (-1) to go back.");
 			}catch (Exception e){
 				System.out.println("Invalid integer. Please enter again!");
 				sc.nextLine();
@@ -148,11 +148,11 @@ public class OrderUI {
 				input = sc.nextInt();sc.nextLine();
                 if(input == -1) break;
                 if(TableManager.validateCustomerAtTable(input, tableArray) == false){
-                    System.out.println("The table is not occupied by customer.");
+                    System.out.println("The table is not occupied by customer. Try again or enter (-1) to go back.");
                     continue;
                 }
                 if(TableManager.validateOrderExists(input, tableArray) == false){
-                    System.out.println("The table has no order yet. Please create an order first.");
+                    System.out.println("The table has no order yet. Please create an order first. Try again or enter (-1) to go back.");
                     return -1;
                 }
                 return input;

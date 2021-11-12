@@ -32,7 +32,7 @@ public class CustomerUI{
 				System.out.println("Invalid name. Please enter again!");
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 
@@ -53,7 +53,7 @@ public class CustomerUI{
 				sc.nextLine();
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 

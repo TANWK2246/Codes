@@ -39,12 +39,12 @@ public class OrderUI {
         tableID = promptForWithCustomerTableIDInput(restaurant.getTableArray());
         if(tableID == -1){
             System.out.println("Going back to home page...");
-            sc.close();
+            
 			return;
         }
 
         OrderManager.viewOrder(tableID, restaurant.getTableArray());
-        sc.close();
+        
     }
 
     public static void orderEditor(Restaurant restaurant){
@@ -55,7 +55,7 @@ public class OrderUI {
         tableID = promptForWithCustomerTableIDInput(restaurant.getTableArray());
         if(tableID == -1){
             System.out.println("Going back to home page...");
-            sc.close();
+            
 			return;
         }
 
@@ -98,7 +98,7 @@ public class OrderUI {
         }while(choice!=4);
 
         System.out.println("Order edited!");
-        sc.close();
+        
     }
 
     public static int promptForStaffIDInput(StaffArray staffArray) {
@@ -116,7 +116,7 @@ public class OrderUI {
 				sc.nextLine();
 			}
 		}
-        sc.close();
+        
 		return input;
 	}
 
@@ -135,7 +135,7 @@ public class OrderUI {
 				sc.nextLine();
 			}
 		}
-        sc.close();
+        
 		return input;
 	}
 
@@ -160,7 +160,7 @@ public class OrderUI {
 				sc.nextLine();
 			}
 		}
-        sc.close();
+        
 		return input;
 	}
 
@@ -182,7 +182,7 @@ public class OrderUI {
 				sc.nextLine();
 			}
 		}
-        sc.close();
+        
 		return input;
 	}
 
@@ -200,7 +200,7 @@ public class OrderUI {
 				sc.nextLine();
 			}
 		}
-        sc.close();
+        
 		return input;
 	}
 
@@ -218,7 +218,7 @@ public class OrderUI {
 				sc.nextLine();
 			}
 		}
-        sc.close();
+        
 		return input;
 	}
 

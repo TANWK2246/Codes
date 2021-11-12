@@ -8,7 +8,7 @@ public class BillUI{
         tableID = OrderUI.promptForWithOrderTableIDInput(restaurant.getTableArray());
         if(tableID == -1){
             System.out.println("Going back to home page...");
-            sc.close();
+            
 			return;
         }
 
@@ -16,11 +16,11 @@ public class BillUI{
 		membership = sc.nextInt();
         if(membership == -1){
             System.out.println("Going back to home page...");
-            sc.close();
+            
 			return;
         }
 
 		BillManager.generateBill(tableID, membership, restaurant.getTableArray(), restaurant.getBillArray(), restaurant.getSalesRevenueReport());
-        sc.close();
+        
 	}
 }

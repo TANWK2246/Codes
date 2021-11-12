@@ -96,7 +96,7 @@ public class App{
             }
 
         }while (choice < 13);
-        sc.close();
+        
         try {
             FileOutputStream f = new FileOutputStream(new File("restaurant.txt"));
 			ObjectOutputStream o = new ObjectOutputStream(f);

@@ -14,7 +14,7 @@ public class ReservationUI{
 		checkInDateTime = promptForCheckInTimeInput();
 		if(checkInDateTime.equals("-1")){
 			System.out.println("Action cancelled. Going back to Home Page...");
-			sc.close();
+			
 			return;
 		}
 		
@@ -23,7 +23,7 @@ public class ReservationUI{
 		if(customer == null){
 			System.out.println("Sorry! No suitable empty tables available!");
 			System.out.println("Going back to Home Page...");
-			sc.close();
+			
 			return;
 		}else{
 			System.out.println("Customer " + customer.getName() + " has been assigned to table number " + customer.getTable().getTableID());
@@ -33,7 +33,7 @@ public class ReservationUI{
 		phone = sc.nextInt();
 
 		System.out.println("ReservationID: " + ReservationManager.createReservation(checkInDateTime, customer, phone, restaurant.getReservationArray()));
-		sc.close();
+		
 	}
 
 	public static void reservationViewer(Restaurant restaurant){
@@ -50,7 +50,7 @@ public class ReservationUI{
 		}else{
 			System.out.println("Reservation found. Table number: " + result);
 		}
-		sc.close();
+		
 	}
 
 	public static void reservationRemover(Restaurant restaurant){
@@ -67,7 +67,7 @@ public class ReservationUI{
 		}else{
 			System.out.println("Reservation removed. Table number: " + result + " is released.");
 		}
-		sc.close();
+		
 	}
 
 	public static String promptForCheckInTimeInput(){
@@ -88,7 +88,7 @@ public class ReservationUI{
 				System.out.println("Invalid format. Please enter again!");
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 

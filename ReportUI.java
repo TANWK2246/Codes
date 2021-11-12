@@ -15,6 +15,6 @@ public class ReportUI{
         System.out.println("Sales Revenue Report from " + startDate + " to " + endDate);
 
         ReportManager.printSalesRevenueReport(startDate, endDate, restaurant.getBillArray(), restaurant.getSalesRevenueReport());
-        sc.close();
+        
     }
 }

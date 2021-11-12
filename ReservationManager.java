@@ -1,4 +1,6 @@
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
 import java.time.Duration;
 
 public class ReservationManager{
@@ -51,10 +53,14 @@ public class ReservationManager{
         LocalDateTime checkInTime = LocalDateTime.parse(checkInDateTime);
 
 		LocalDateTime now = LocalDateTime.now();
-    	
 		Duration duration = Duration.between(now, checkInTime);
-
         if(duration.toMinutes() < 60) return false;
+
+		LocalTime time = checkInTime.toLocalTime();
+		if(time.compareTo(LocalTime.of(10, 00)) < 0) return false;
+		if(time.compareTo(LocalTime.of(22, 00)) > 0) return false;
+
+		if(checkInTime.toLocalDate().compareTo(LocalDate.now().plusDays(1)) < 0) return false;
         
         return true;
     }

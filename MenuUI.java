@@ -28,6 +28,7 @@ public class MenuUI{
 					System.out.println("Add Ala Carte Item");
 					sc.nextLine();
 					name = promptForMenuItemNameInput(restaurant.getMenu());
+					System.out.println(name);
 					description = promptForMenuItemDescriptionInput();
 					price = promptForMenuItemPriceInput();
 					itemType = promptForMenuItemTypeInput();
@@ -138,7 +139,7 @@ public class MenuUI{
 
             }
         }while(choice < 6);
-		sc.close();
+		
     }
 
 	public static String promptForMenuItemNameInput(Menu menu){
@@ -149,7 +150,7 @@ public class MenuUI{
 			try{
 				System.out.println("Enter Item/Package Name:");
 				input = sc.nextLine();
-				if(input.equals(-1)) return input;
+				if(input.equals("-1")) return input;
 				if(MenuManager.hasDuplicateItemName(input, menu)){
 					System.out.println("The name has been taken. Please enter another name.");
 					continue;
@@ -159,7 +160,7 @@ public class MenuUI{
 				System.out.println("Invalid name. Please enter again!");
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 
@@ -174,9 +175,10 @@ public class MenuUI{
 				break;
 			}catch (Exception e){
 				System.out.println("Invalid description. Please enter again!");
+				
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 
@@ -198,7 +200,7 @@ public class MenuUI{
 				sc.nextLine();
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 
@@ -219,7 +221,7 @@ public class MenuUI{
 				sc.nextLine();
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 
@@ -241,7 +243,7 @@ public class MenuUI{
 				sc.nextLine();
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 
@@ -263,7 +265,7 @@ public class MenuUI{
 				sc.nextLine();
 			}
 		}
-		sc.close();
+		
 		return input;
 	}
 

@@ -24,17 +24,24 @@ public class Order implements Serializable{
 	}
 
 	public int printOrder(){
+		String formatInfo = "%s\t%-20.20s %-3s\n";
+		System.out.format(formatInfo,"ID", "Item Name", "Quantity");
+
+
 		int counter = 0;
 		for(ItemOrder i : itemOrder){
-			System.out.println(counter + "\t" + i.getItem().getName() + "\t" + i.getQuantity());
+			System.out.format(formatInfo, String.valueOf(counter), i.getItem().getName(), String.valueOf(i.getQuantity()));
 			counter++;
 		}
+		System.out.println();
 		return counter;
 	}
 
 	public void printOrderWithSubtotal(){
+		String formatInfo = "%-3d %-20.20s\tS$ %7.2f\n";
+
 		for(ItemOrder i : itemOrder){
-			System.out.println(i.getItem().getName() + "\t" + i.getQuantity() + "\t" + i.calculateSubtotal());
+			System.out.format(formatInfo, i.getQuantity(), i.getItem().getName(), i.calculateSubtotal());
 		}
 	}
 	

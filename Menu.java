@@ -48,7 +48,7 @@ public class Menu implements Serializable {
 
 		int counter = 0;
 		while(counter < noOfAlaCarteItems){
-			System.out.printf("%d\t ", counter);
+			System.out.printf("%d\t", counter);
 			menuItems.get(counter).displayMenuItem();
 			counter++;
 		}

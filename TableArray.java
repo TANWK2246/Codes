@@ -24,6 +24,9 @@ public class TableArray implements Serializable{
     }
 
     public void showEmptyTables() {
+        StringAlignUtils util = new StringAlignUtils(30, StringAlignUtils.Alignment.CENTER);
+    	System.out.print( util.format("Empty Tables") );
+        
         int counter = 0, noOfEmptyTables = 0;
 		for (Table i : this.tables) {
             if(i.getIsOccupied() == false){

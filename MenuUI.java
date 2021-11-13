@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 
 public class MenuUI{
     public static void menuEditor(Restaurant restaurant){
-        int choice;
+        int choice = 0;
         String name, description;
         double price;
         int itemType, itemID, setPackageID;
@@ -13,7 +13,8 @@ public class MenuUI{
         Scanner sc = new Scanner(System.in);
 
         do{
-			System.out.println("====================");
+			try{
+				System.out.println("====================");
             System.out.println("Menu Editing Panel:");
             System.out.println("1: Add Ala Carte Item");
             System.out.println("2: Edit Ala Carte Item");
@@ -134,11 +135,20 @@ public class MenuUI{
 					}
                     MenuManager.removeSetPackage(itemID, restaurant.getMenu());
                     break;
-                
-                case 7: System.out.println("Done editing, Back to Homepage...");
+                case 7: 
+					System.out.println("Done editing, Back to Homepage...");
+					break;
+				default:
+					System.out.println("Invalid option. Please enter again!");
+					break;
 
             }
-        }while(choice < 6);
+			}catch(InputMismatchException e){
+				System.out.println("Invalid format. Please enter again!");
+                sc.nextLine();
+			}
+			
+        }while(choice != 7);
 		
     }
 

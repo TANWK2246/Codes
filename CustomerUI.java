@@ -45,7 +45,7 @@ public class CustomerUI{
 				System.out.println("Enter Number of Pax:");
 				input = sc.nextInt();sc.nextLine();
 				if(input <= 0 | input > 10){
-					System.out.println("Please enter a number from 0 to 10.");
+					System.out.println("Please enter a number from 1 to 10.");
 					continue;
 				}
 				break;

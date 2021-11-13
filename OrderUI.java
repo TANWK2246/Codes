@@ -51,7 +51,7 @@ public class OrderUI {
     public static void orderEditor(Restaurant restaurant){
         Scanner sc = new Scanner(System.in);
 
-        int tableID, itemID, quantity, choice, noOfItemOrder;
+        int tableID, itemID, quantity, choice = 0, noOfItemOrder;
 
         tableID = promptForWithOrderTableIDInput(restaurant.getTableArray());
         if(tableID == -1){
@@ -61,45 +61,51 @@ public class OrderUI {
         }
 
         do{
-            System.out.println("====================");
-            System.out.println("Order Editing Panel:");
-            System.out.println("1: Add new Item");
-            System.out.println("2: Edit quantity of an Item");
-            System.out.println("3: Remove an Item");
-            System.out.println("4: Done editing");
-            choice = sc.nextInt();
-            switch(choice){
-                case 1:
-                    restaurant.getMenu().displayMenu();
-                    System.out.println("Add Item into Order, (-1) to end");
-                    itemID = promptForMenuItemIDInput(restaurant.getMenu());
-                    
-                    while(itemID != -1){
-                        quantity = promptForQuantityInput();
-                        OrderManager.addItemIntoOrder(tableID, itemID, quantity, restaurant.getTableArray(), restaurant.getMenu());
+            try{
+                System.out.println("====================");
+                System.out.println("Order Editing Panel:");
+                System.out.println("1: Add new Item");
+                System.out.println("2: Edit quantity of an Item");
+                System.out.println("3: Remove an Item");
+                System.out.println("4: Done editing");
+                choice = sc.nextInt();
+                switch(choice){
+                    case 1:
+                        restaurant.getMenu().displayMenu();
+                        System.out.println("Add Item into Order, (-1) to end");
                         itemID = promptForMenuItemIDInput(restaurant.getMenu());
-                    }
-                    break;
-                case 2:
-                    noOfItemOrder = OrderManager.viewOrder(tableID, restaurant.getTableArray());
-                    System.out.println("Edit item in the order");
-                    itemID = promptForItemOrderIDInput(noOfItemOrder);
-                    quantity = promptForQuantityInput();
-                    OrderManager.editQuantityOfItemOrder(tableID, itemID, quantity, restaurant.getTableArray());
-                    break;
-                case 3:
-                    noOfItemOrder = OrderManager.viewOrder(tableID, restaurant.getTableArray());
-                    System.out.println("Remove item from the order");
-                    itemID = promptForItemOrderIDInput(noOfItemOrder);
-                    OrderManager.removeItemFromOrder(tableID, itemID, restaurant.getTableArray());
-                    break;
-                case 4:
-                    break;
+                        
+                        while(itemID != -1){
+                            quantity = promptForQuantityInput();
+                            OrderManager.addItemIntoOrder(tableID, itemID, quantity, restaurant.getTableArray(), restaurant.getMenu());
+                            itemID = promptForMenuItemIDInput(restaurant.getMenu());
+                        }
+                        break;
+                    case 2:
+                        noOfItemOrder = OrderManager.viewOrder(tableID, restaurant.getTableArray());
+                        System.out.println("Edit item in the order");
+                        itemID = promptForItemOrderIDInput(noOfItemOrder);
+                        quantity = promptForQuantityInput();
+                        OrderManager.editQuantityOfItemOrder(tableID, itemID, quantity, restaurant.getTableArray());
+                        break;
+                    case 3:
+                        noOfItemOrder = OrderManager.viewOrder(tableID, restaurant.getTableArray());
+                        System.out.println("Remove item from the order");
+                        itemID = promptForItemOrderIDInput(noOfItemOrder);
+                        OrderManager.removeItemFromOrder(tableID, itemID, restaurant.getTableArray());
+                        break;
+                    case 4:
+                        System.out.println("Done editing, Back to Homepage...");
+                        break;
+                    default:
+                        System.out.println("Invalid option. Please enter again!");
+                        break;
+                }
+            }catch(InputMismatchException e){
+                System.out.println("Invalid format. Please enter again!");
+                sc.nextLine();
             }
         }while(choice!=4);
-
-        System.out.println("Order edited!");
-        
     }
 
     public static int promptForStaffIDInput(StaffArray staffArray) {

@@ -51,7 +51,7 @@ public class Reservation implements Serializable{
     	
 		Duration duration = Duration.between(this.checkInTime, now);
 
-		if(duration.toMinutes() > 15){
+		if(duration.toMinutes() > 2){
 			this.setValidity(false);
 			return this.customer;	
 		}

@@ -54,7 +54,7 @@ public class ReservationManager{
 
 		LocalDateTime now = LocalDateTime.now();
 		Duration duration = Duration.between(now, checkInTime);
-        if(duration.toMinutes() < 60) return false;
+        if(duration.toMinutes() < 2) return false;
 
 		LocalTime time = checkInTime.toLocalTime();
 		if(time.compareTo(LocalTime.of(10, 00)) < 0) return false;

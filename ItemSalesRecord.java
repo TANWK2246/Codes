@@ -32,6 +32,10 @@ public class ItemSalesRecord implements Serializable{
             totalQuantity += pair.getQuantity();
         }
 
+        if(totalQuantity == 0){
+            return 0;
+        }
+
         String formatInfo = "%d\t%-20.20s\tS$ %9.2f\n";
         System.out.format(formatInfo, totalQuantity, this.menuItem.getName(), totalQuantity*this.menuItem.getPrice());
         return totalQuantity*this.menuItem.getPrice();

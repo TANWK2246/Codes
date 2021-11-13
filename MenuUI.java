@@ -44,7 +44,7 @@ public class MenuUI{
 						System.out.println("Going back to editing panel...");
 						continue;
 					}
-					
+					System.out.println("Enter (-1) to skip the part that you do not want to change.");
 					sc.nextLine();
 					name = promptForMenuItemNameInput(restaurant.getMenu());
 					description = promptForMenuItemDescriptionInput();
@@ -95,7 +95,7 @@ public class MenuUI{
 						System.out.println("Going back to editing panel...");
 						continue;
 					}
-
+					System.out.println("Enter (-1) to skip the part that you do not want to change.");
 					sc.nextLine();
 					name = promptForMenuItemNameInput(restaurant.getMenu());
 					description = promptForMenuItemDescriptionInput();
@@ -182,6 +182,7 @@ public class MenuUI{
 			try{
 				System.out.println("Enter Item/Package Description:");
 				input = sc.nextLine();
+				if(input.equals("-1")) return input;
 				break;
 			}catch (InputMismatchException e){
 				System.out.println("Invalid description. Please enter again!");

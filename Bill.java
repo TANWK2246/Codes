@@ -20,7 +20,6 @@ public class Bill implements Serializable{
 		this.discount = DiscountCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice(), this.customer.isHasMembership());
 		this.serviceCharge = ServiceChargeCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice() - this.discount);
 		this.GST = GSTCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice() - this.discount);
-	
 	}
 
 	public void printOrderInvoice() {

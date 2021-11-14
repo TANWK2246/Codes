@@ -51,7 +51,7 @@ public class ReservationManager{
 	 * Remove reservation.
 	 *
 	 * @param reservationID 		the reservation id
-	 * @param reservationArray    	the restaurant array
+	 * @param reservationArray    	the reservation array
 	 * @return the table ID of the reservation removed.
 	 */
 	public static int removeReservation(int reservationID, ReservationArray reservationArray) {
@@ -97,12 +97,12 @@ public class ReservationManager{
 
 		LocalDateTime now = LocalDateTime.now();
 		Duration duration = Duration.between(now, checkInTime);
-        if(duration.toMinutes() < 2) return false;
+        if(duration.toMinutes() < 60) return false;
 
 		LocalTime time = checkInTime.toLocalTime();
 
 		if(time.compareTo(LocalTime.of(10, 00)) < 0) return false;
-		if(time.compareTo(LocalTime.of(23, 30)) > 0) return false;
+		if(time.compareTo(LocalTime.of(22, 00)) > 0) return false;
 
 		if(checkInTime.toLocalDate().compareTo(LocalDate.now().plusDays(1)) > 0) return false;
         

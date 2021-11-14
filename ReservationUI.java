@@ -103,7 +103,7 @@ public class ReservationUI{
 				input = sc.nextLine();
 				if(input.equals("-1")) return input;
 				if(ReservationManager.validateReservationTime(input) == false){
-					System.out.println("Can only make reservation at least 1 hour (2 minutes for demo) in advance or within operating hour!");
+					System.out.println("Can only make reservation at least 1 hour (2 minutes for demo) in advance, within operating hour and not beyond tomorrow!");
 					continue;
 				}
 				break;

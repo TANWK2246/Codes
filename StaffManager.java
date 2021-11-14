@@ -7,7 +7,7 @@ public class StaffManager{
 	 *
 	 * @param staffID    the staff id
 	 * @param staffArray the staff array
-	 * @return true if stadd id can match with any staff in the array, or false otherwise
+	 * @return true if staff id can match with any staff in the array, or false otherwise
 	 */
 	public static boolean validateStaffID(int staffID, StaffArray staffArray){
 		for(Staff staff : staffArray.getStaffs()){
@@ -16,6 +16,13 @@ public class StaffManager{
 		return false;
 	}
 
+	/**
+	 * Get staff by id.
+	 *
+	 * @param staffID    the staff id
+	 * @param staffArray the staff array
+	 * @return staff with the staff id, or null if not found
+	 */
 	public static Staff getStaffByID(int staffID, StaffArray staffArray){
 		for(Staff staff : staffArray.getStaffs()){
 			if(staff.getStaffID() == staffID) return staff;

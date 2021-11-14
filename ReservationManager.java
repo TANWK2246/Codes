@@ -52,10 +52,9 @@ public class ReservationManager{
 	 *
 	 * @param reservationID 		the reservation id
 	 * @param reservationArray    	the restaurant array
-	 * @param tableArray    		the table array
 	 * @return the table ID of the reservation removed.
 	 */
-	public static int removeReservation(int reservationID, ReservationArray reservationArray, TableArray tableArray) {
+	public static int removeReservation(int reservationID, ReservationArray reservationArray) {
 		int result = checkReservation(reservationID, reservationArray);
 		if(result == -1){
 			return -1;
@@ -64,7 +63,10 @@ public class ReservationManager{
 		}else{
 			Reservation reservation = reservationArray.getReservations().get(reservationID);
 			reservation.setValidity(false);
-			return reservation.getCustomer().getTable().getTableID();
+			Table table = reservation.getCustomer().getTable();
+			table.setIsOccupied(false);
+			
+			return table.getTableID();
 
 		}
 		

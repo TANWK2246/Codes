@@ -77,7 +77,7 @@ public class ReservationUI{
 		System.out.println("Remove Reservation");
 		reservationID = promptForReservationIDInput();
 
-		int result = ReservationManager.removeReservation(reservationID, restaurant.getReservationArray(), restaurant.getTableArray());
+		int result = ReservationManager.removeReservation(reservationID, restaurant.getReservationArray());
 		if(result == -1){
 			System.out.println("This reservation had been removed.");
 		}else if(result == -2){

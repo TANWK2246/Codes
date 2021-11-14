@@ -72,7 +72,8 @@ public class ItemSalesRecord implements Serializable{
             if(end.compareTo(pair.getDay()) < 0)break;
             totalQuantity += pair.getQuantity();
         }
-        System.out.println(this.menuItem.getName() + "\t" + totalQuantity + "\t" + totalQuantity*this.menuItem.getPrice());
+        String formatInfo = "%d\t%-20.20s\tS$ %9.2f\n";
+        System.out.format(formatInfo, totalQuantity, this.menuItem.getName() , totalQuantity*this.menuItem.getPrice());
         return totalQuantity*this.menuItem.getPrice();
     }
 }

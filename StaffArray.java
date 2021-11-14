@@ -24,6 +24,11 @@ public class StaffArray implements Serializable{
 		staffs.add(new Staff(10003, "Susan", Gender.Female, JobTitle.Waiter));
 	}
 
+	/**
+	 * Get array list of staffs
+	 * 
+	 * @return array list of staffs
+	 */
 	public ArrayList<Staff> getStaffs(){
 		return this.staffs;
 	}

@@ -50,8 +50,9 @@ public class ReservationManager{
 	/**
 	 * Remove reservation.
 	 *
-	 * @param reservationID the reservation id
-	 * @param restaurant    the restaurant
+	 * @param reservationID 		the reservation id
+	 * @param reservationArray    	the restaurant array
+	 * @param tableArray    		the table array
 	 * @return the table ID of the reservation removed.
 	 */
 	public static int removeReservation(int reservationID, ReservationArray reservationArray, TableArray tableArray) {

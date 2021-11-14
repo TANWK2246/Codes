@@ -1,8 +1,21 @@
+/**
+ * The type Bill manager.
+ */
+
 public class BillManager{
+	/**
+	 * Generate bill, release table, update sales record.
+	 *
+	 * @param tableID    the table id
+	 * @param membership the membership (1 for has membership, 2 for has no membership)
+	 * @param tableArray the table array
+	 * @param billArray  the bill array
+	 * @param report     the report
+	 */
 	public static void generateBill(int tableID, int membership, TableArray tableArray, BillArray billArray, SalesRevenueReport report) {
 		Bill newBill;
 
-		Customer customer = TableManager.getTable(tableID, tableArray).getCustomer();
+		Customer customer = tableArray.getTables().get(tableID).getCustomer();
 
 		if(membership == 1){
 			customer.setHasMembership(true);
@@ -11,7 +24,7 @@ public class BillManager{
 		}
 
 		newBill = new Bill(billArray.getBills().size(), customer);
-		billArray.addBill(newBill);
+		billArray.getBills().add(newBill);
 
 		newBill.printOrderInvoice();
 

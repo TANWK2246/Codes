@@ -1,6 +1,15 @@
 import java.time.LocalDate;
 
+/**
+ * The type Report manager.
+ */
 public class ReportManager{
+    /**
+     * Update record.
+     *
+     * @param bill   the bill
+     * @param report the report
+     */
     public static void updateRecord(Bill bill, SalesRevenueReport report){
         boolean foundExistingRecord = false;
         for(ItemOrder item : bill.getCustomer().getOrder().getItemOrder()){
@@ -20,6 +29,14 @@ public class ReportManager{
         }
     }
 
+    /**
+     * Print sales revenue report.
+     *
+     * @param startDate the start date
+     * @param endDate   the end date
+     * @param billArray the bill array
+     * @param report    the report
+     */
     public static void printSalesRevenueReport(LocalDate startDate, LocalDate endDate, BillArray billArray, SalesRevenueReport report){
         StringAlignUtils util = new StringAlignUtils(50, StringAlignUtils.Alignment.CENTER);
         System.out.println("--------------------------------------------------");

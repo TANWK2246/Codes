@@ -1,28 +1,39 @@
 import java.util.ArrayList;
 import java.io.Serializable;
 
+/**
+ * The type Order.
+ */
 public class Order implements Serializable{
+	/**
+	 * The Item order.
+	 */
 	private ArrayList<ItemOrder> itemOrder = new ArrayList<ItemOrder>();
+	/**
+	 * The Created by.
+	 */
 	private Staff created_by;
 
+	/**
+	 * Instantiates a new Order.
+	 */
 	public Order(){}
 
-	public Order(Staff staff, Customer customer){ 
+	/**
+	 * Instantiates a new Order.
+	 *
+	 * @param staff    the staff
+	 * @param customer the customer
+	 */
+	public Order(Staff staff, Customer customer){
 		this.created_by = staff;
 	}
 
-	public void addItemOrder(ItemOrder itemOrder){
-		this.itemOrder.add(itemOrder);
-	}
-
-	public void removeItemOrder(int itemID){
-		this.itemOrder.remove(itemID);
-	}
-
-	public void editQuantityofItemOrder(int itemID, int quantity){
-		this.itemOrder.get(itemID).setQuantity(quantity);
-	}
-
+	/**
+	 * Print order.
+	 *
+	 * @return the number of item order
+	 */
 	public int printOrder(){
 		String formatInfo = "%s\t%-20.20s %-3s\n";
 		System.out.format(formatInfo,"ID", "Item Name", "Quantity");
@@ -37,6 +48,10 @@ public class Order implements Serializable{
 		return counter;
 	}
 
+	
+	/**
+	 * Print order with subtotal.
+	 */
 	public void printOrderWithSubtotal(){
 		String formatInfo = "%-3d %-20.20s\tS$ %7.2f\n";
 
@@ -45,6 +60,11 @@ public class Order implements Serializable{
 		}
 	}
 	
+	/**
+	 * Calculate initial total price double.
+	 *
+	 * @return the initial total price
+	 */
 	public double calculateInitialTotalPrice(){
 		double total = 0;
 		for(ItemOrder i : itemOrder){
@@ -52,11 +72,21 @@ public class Order implements Serializable{
 		}
 		return total;
 	}
-
+	
+	/**
+	 * Gets the staff who created the order.
+	 *
+	 * @return the staff who created the order
+	 */
 	public Staff getCreated_by() {
 		return this.created_by;
 	}
 
+	/**
+	 * Gets the array list of item order.
+	 *
+	 * @return the array list of item order
+	 */
 	public ArrayList<ItemOrder> getItemOrder() {
 		return this.itemOrder;
 	}

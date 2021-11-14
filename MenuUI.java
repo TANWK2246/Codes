@@ -2,7 +2,15 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+/**
+ * The type Menu ui.
+ */
 public class MenuUI{
+	/**
+	 * Menu editor ui.
+	 *
+	 * @param restaurant the restaurant
+	 */
     public static void menuEditor(Restaurant restaurant){
         int choice = 0;
         String name, description;
@@ -15,134 +23,133 @@ public class MenuUI{
         do{
 			try{
 				System.out.println("====================");
-            System.out.println("Menu Editing Panel:");
-            System.out.println("1: Add Ala Carte Item");
-            System.out.println("2: Edit Ala Carte Item");
-			System.out.println("3: Remove Ala Carte Item");
-            System.out.println("4: Add Set Package");
-            System.out.println("5: Edit Set Package");
-            System.out.println("6: Remove Set Package");
-            System.out.println("7: Back to Home Page");
-			choice = sc.nextInt();
+				System.out.println("Menu Editing Panel:");
+				System.out.println("1: Add Ala Carte Item");
+				System.out.println("2: Edit Ala Carte Item");
+				System.out.println("3: Remove Ala Carte Item");
+				System.out.println("4: Add Set Package");
+				System.out.println("5: Edit Set Package");
+				System.out.println("6: Remove Set Package");
+				System.out.println("7: Back to Home Page");
+				choice = sc.nextInt();
 
-            switch (choice) {
-                case 1:
-					System.out.println("Add Ala Carte Item");
-					sc.nextLine();
-					name = promptForMenuItemNameInput(restaurant.getMenu());
-					description = promptForMenuItemDescriptionInput();
-					price = promptForMenuItemPriceInput();
-					itemType = promptForMenuItemTypeInput();
-                    MenuManager.addAlaCarteItem(name, description, price, itemType, restaurant.getMenu());
-                    break;
-                case 2:
-					System.out.println("Edit Ala Carte Item");
-                    restaurant.getMenu().displayAlaCarteMenu();
-					System.out.println("Enter ItemID to edit it: (-1) to go back to editing panel");
-					itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					if(itemID == -1){
-						System.out.println("Going back to editing panel...");
-						continue;
-					}
-					System.out.println("Enter (-1) to skip the part that you do not want to change.");
-					sc.nextLine();
-					name = promptForMenuItemNameInput(restaurant.getMenu());
-					description = promptForMenuItemDescriptionInput();
-					price = promptForMenuItemPriceInput();
-					itemType = promptForMenuItemTypeInput();
-					MenuManager.editAlaCarteItem(itemID, name, description, price, itemType, restaurant.getMenu());
-                    break;
-				case 3:
-					System.out.println("Remove Ala Carte Item");
-                    restaurant.getMenu().displayMenu();
-					System.out.println("Enter ItemID to remove it: (-1) to go back to editing panel");
-					itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					if(itemID == -1){
-						System.out.println("Going back to editing panel...");
-						continue;
-					}
-                    MenuManager.removeAlaCarteItem(itemID, restaurant.getMenu());
-                    break;
-                case 4: 
-					System.out.println("Add Set Package");
-					sc.nextLine();
-					name = promptForMenuItemNameInput(restaurant.getMenu());
-					description = promptForMenuItemDescriptionInput();
-					price = promptForMenuItemPriceInput();
-
-					restaurant.getMenu().displayAlaCarteMenu();
-                    
-					System.out.println("Add item into the package, enter (-1) to end");
-
-                    list1.clear();
-					
-                    itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-                    
-					while (itemID != -1){
-                        list1.add(itemID);	
+				switch (choice) {
+					case 1:
+						System.out.println("Add Ala Carte Item");
+						sc.nextLine();
+						name = promptForMenuItemNameInput(restaurant.getMenu());
+						description = promptForMenuItemDescriptionInput();
+						price = promptForMenuItemPriceInput();
+						itemType = promptForMenuItemTypeInput();
+						MenuManager.addAlaCarteItem(name, description, price, itemType, restaurant.getMenu());
+						break;
+					case 2:
+						System.out.println("Edit Ala Carte Item");
+						restaurant.getMenu().displayAlaCarteMenu();
+						System.out.println("Enter ItemID to edit it: (-1) to go back to editing panel");
 						itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					}
-
-                    MenuManager.addSetPackage(name, description, price, list1, restaurant.getMenu());
-                    break;
-                case 5:
-					System.out.println("Edit Set Package");
-                    restaurant.getMenu().displaySetPackageMenu();
-
-					System.out.println("Enter ItemID to edit it: (-1) to go back to editing panel");
-					setPackageID = promptForSetPackageIDInput(restaurant.getMenu());
-					if(setPackageID == -1){
-						System.out.println("Going back to editing panel...");
-						continue;
-					}
-					System.out.println("Enter (-1) to skip the part that you do not want to change.");
-					sc.nextLine();
-					name = promptForMenuItemNameInput(restaurant.getMenu());
-					description = promptForMenuItemDescriptionInput();
-					price = promptForMenuItemPriceInput();
-					
-                    restaurant.getMenu().displayAlaCarteMenu();
-
-					System.out.println("Add item into the package, enter (-1) to end");
-
-                    list1.clear();
-					itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					while (itemID != -1){
-						list1.add(itemID);
+						if(itemID == -1){
+							System.out.println("Going back to editing panel...");
+							continue;
+						}
+						System.out.println("Enter (-1) to skip the part that you do not want to change.");
+						sc.nextLine();
+						name = promptForMenuItemNameInput(restaurant.getMenu());
+						description = promptForMenuItemDescriptionInput();
+						price = promptForMenuItemPriceInput();
+						itemType = promptForMenuItemTypeInput();
+						MenuManager.editAlaCarteItem(itemID, name, description, price, itemType, restaurant.getMenu());
+						break;
+					case 3:
+						System.out.println("Remove Ala Carte Item");
+						restaurant.getMenu().displayMenu();
+						System.out.println("Enter ItemID to remove it: (-1) to go back to editing panel");
 						itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					}
+						if(itemID == -1){
+							System.out.println("Going back to editing panel...");
+							continue;
+						}
+						MenuManager.removeAlaCarteItem(itemID, restaurant.getMenu());
+						break;
+					case 4: 
+						System.out.println("Add Set Package");
+						sc.nextLine();
+						name = promptForMenuItemNameInput(restaurant.getMenu());
+						description = promptForMenuItemDescriptionInput();
+						price = promptForMenuItemPriceInput();
 
-					System.out.println("Remove item from the package, enter(-1) to end");
+						restaurant.getMenu().displayAlaCarteMenu();
+						
+						System.out.println("Add item into the package, enter (-1) to end");
 
-                    list2.clear();
-					itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					while (itemID != -1){
-						list2.add(itemID);
+						list1.clear();
+						
 						itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
-					}
-					
-                    MenuManager.editSetPackage(setPackageID, name, description, price, list1, list2, restaurant.getMenu());
-					break;
-				case 6:
-					System.out.println("Remove Set Package");
-					restaurant.getMenu().displaySetPackageMenu();
+						
+						while (itemID != -1){
+							list1.add(itemID);	
+							itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
+						}
 
-					System.out.println("Enter ItemID to remove it: (-1) to go back to editing panel");
-					itemID = promptForSetPackageIDInput(restaurant.getMenu());
-					if(itemID == -1){
-						System.out.println("Going back to editing panel...");
-						continue;
-					}
-                    MenuManager.removeSetPackage(itemID, restaurant.getMenu());
-                    break;
-                case 7: 
-					System.out.println("Done editing, Back to Homepage...");
-					break;
-				default:
-					System.out.println("Invalid option. Please enter again!");
-					break;
+						MenuManager.addSetPackage(name, description, price, list1, restaurant.getMenu());
+						break;
+					case 5:
+						System.out.println("Edit Set Package");
+						restaurant.getMenu().displaySetPackageMenu();
 
-            }
+						System.out.println("Enter ItemID to edit it: (-1) to go back to editing panel");
+						setPackageID = promptForSetPackageIDInput(restaurant.getMenu());
+						if(setPackageID == -1){
+							System.out.println("Going back to editing panel...");
+							continue;
+						}
+						System.out.println("Enter (-1) to skip the part that you do not want to change.");
+						sc.nextLine();
+						name = promptForMenuItemNameInput(restaurant.getMenu());
+						description = promptForMenuItemDescriptionInput();
+						price = promptForMenuItemPriceInput();
+						
+						restaurant.getMenu().displayAlaCarteMenu();
+
+						System.out.println("Add item into the package, enter (-1) to end");
+
+						list1.clear();
+						itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
+						while (itemID != -1){
+							list1.add(itemID);
+							itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
+						}
+
+						System.out.println("Remove item from the package, enter(-1) to end");
+
+						list2.clear();
+						itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
+						while (itemID != -1){
+							list2.add(itemID);
+							itemID = promptForAlaCarteItemIDInput(restaurant.getMenu());
+						}
+						
+						MenuManager.editSetPackage(setPackageID, name, description, price, list1, list2, restaurant.getMenu());
+						break;
+					case 6:
+						System.out.println("Remove Set Package");
+						restaurant.getMenu().displaySetPackageMenu();
+
+						System.out.println("Enter ItemID to remove it: (-1) to go back to editing panel");
+						itemID = promptForSetPackageIDInput(restaurant.getMenu());
+						if(itemID == -1){
+							System.out.println("Going back to editing panel...");
+							continue;
+						}
+						MenuManager.removeSetPackage(itemID, restaurant.getMenu());
+						break;
+					case 7: 
+						System.out.println("Done editing, Back to Homepage...");
+						break;
+					default:
+						System.out.println("Invalid option. Please enter again!");
+						break;
+				}
 			}catch(InputMismatchException e){
 				System.out.println("Invalid format. Please enter again!");
                 sc.nextLine();
@@ -152,6 +159,12 @@ public class MenuUI{
 		
     }
 
+	/**
+	 * Prompt for menu item name input. Menu item name must not duplicate with what is already in the menu.
+	 *
+	 * @param menu the menu
+	 * @return the name input string
+	 */
 	public static String promptForMenuItemNameInput(Menu menu){
 		Scanner sc = new Scanner(System.in);
 		String input;
@@ -174,6 +187,11 @@ public class MenuUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for menu item description input.
+	 *
+	 * @return the description input string
+	 */
 	public static String promptForMenuItemDescriptionInput(){
 		Scanner sc = new Scanner(System.in);
 		String input;
@@ -193,6 +211,11 @@ public class MenuUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for menu item price input. Price must be a positive double.
+	 *
+	 * @return the price input double
+	 */
 	public static double promptForMenuItemPriceInput() {
 		Scanner sc = new Scanner(System.in);
 		double input;
@@ -215,6 +238,11 @@ public class MenuUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for menu item type input.
+	 *
+	 * @return the item type input int
+	 */
 	public static int promptForMenuItemTypeInput() {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -236,6 +264,12 @@ public class MenuUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for ala carte item id input int.
+	 *
+	 * @param menu the menu
+	 * @return the ala carte item id input int
+	 */
 	public static int promptForAlaCarteItemIDInput(Menu menu) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -258,6 +292,12 @@ public class MenuUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for set package id input int.
+	 *
+	 * @param menu the menu
+	 * @return the set package item id input int
+	 */
 	public static int promptForSetPackageIDInput(Menu menu) {
 		Scanner sc = new Scanner(System.in);
 		int input;

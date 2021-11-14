@@ -2,16 +2,46 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The type Bill.
+ */
 public class Bill implements Serializable{
+	/**
+	 * The Bill id.
+	 */
 	private int billID;
+	/**
+	 * The Check out time.
+	 */
 	private LocalDateTime checkOutTime;
+	/**
+	 * The Customer.
+	 */
 	private Customer customer;
+	/**
+	 * The Discount.
+	 */
 	private double discount;
+	/**
+	 * The Service charge.
+	 */
 	private double serviceCharge;
+	/**
+	 * The Gst.
+	 */
 	private double GST;
 
+	/**
+	 * Instantiates a new Bill.
+	 */
 	public Bill(){}
 
+	/**
+	 * Instantiates a new Bill.
+	 *
+	 * @param billID   the bill id
+	 * @param customer the customer
+	 */
 	public Bill(int billID, Customer customer){
 		this.billID = billID;
 		this.customer = customer;
@@ -22,6 +52,9 @@ public class Bill implements Serializable{
 		this.GST = GSTCalculator.calculate(this.customer.getOrder().calculateInitialTotalPrice() - this.discount);
 	}
 
+	/**
+	 * Print order invoice.
+	 */
 	public void printOrderInvoice() {
 		double finalTotal;
 		
@@ -57,22 +90,47 @@ public class Bill implements Serializable{
 		System.out.println("==========================================");
 	}
 	
+	/**
+	 * Gets discount.
+	 *
+	 * @return the discount
+	 */
 	public double getDiscount() {
 		return this.discount;
 	}
 
+	/**
+	 * Gets service charge.
+	 *
+	 * @return the service charge
+	 */
 	public double getServiceCharge() {
 		return this.serviceCharge;
 	}
 
+	/**
+	 * Gets gst.
+	 *
+	 * @return the gst
+	 */
 	public double getGST() {
 		return this.GST;
 	}
 
+	/**
+	 * Gets customer.
+	 *
+	 * @return the customer
+	 */
 	public Customer getCustomer() {
 		return this.customer;
 	}
 
+	/**
+	 * Gets check out time.
+	 *
+	 * @return the check out time
+	 */
 	public LocalDateTime getCheckOutTime() {
 		return this.checkOutTime;
 	}

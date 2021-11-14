@@ -1,10 +1,26 @@
+/**
+ * The type Staff manager.
+ */
 public class StaffManager{
-	public static Staff getStaff(int staffID, StaffArray staffArray){
-		return staffArray.getStaff(staffID);
+	/**
+	 * Validate staff id.
+	 *
+	 * @param staffID    the staff id
+	 * @param staffArray the staff array
+	 * @return true if stadd id can match with any staff in the array, or false otherwise
+	 */
+	public static boolean validateStaffID(int staffID, StaffArray staffArray){
+		for(Staff staff : staffArray.getStaffs()){
+			if(staff.getStaffID() == staffID) return true;
+		}
+		return false;
 	}
 
-	public static boolean validateStaffID(int staffID, StaffArray staffArray){
-		return staffArray.checkStaffID(staffID);
+	public static Staff getStaffByID(int staffID, StaffArray staffArray){
+		for(Staff staff : staffArray.getStaffs()){
+			if(staff.getStaffID() == staffID) return staff;
+		}
+		return null;
 	}
 
 }

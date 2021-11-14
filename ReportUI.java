@@ -2,8 +2,16 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+/**
+ * The type Report ui.
+ */
 public class ReportUI{
-    public static void reportViewer(Restaurant restaurant){
+    /**
+	 * Report viewer ui.
+	 *
+	 * @param restaurant the restaurant
+	 */
+	public static void reportViewer(Restaurant restaurant){
         Scanner sc = new Scanner(System.in);
         System.out.println("View Sales Revenue Report");
         System.out.println("From:");
@@ -15,6 +23,11 @@ public class ReportUI{
         ReportManager.printSalesRevenueReport(startDate, endDate, restaurant.getBillArray(), restaurant.getSalesRevenueReport());
     }
 
+	/**
+	 * Prompt for date input local date.
+	 *
+	 * @return the local date input
+	 */
     public static LocalDate promptForDateInput(){
         Scanner sc = new Scanner(System.in);
 		String input;

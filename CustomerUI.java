@@ -1,7 +1,15 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
+/**
+ * The type Customer ui.
+ */
 public class CustomerUI{
+	/**
+	 * New customer ui. Prompt for customer details and attempt to assign the customer to a suitable table.
+	 *
+	 * @param restaurant the restaurant
+	 */
 	public static void newCustomer(Restaurant restaurant) {
 		int noOfPax;
 		String name;
@@ -20,6 +28,11 @@ public class CustomerUI{
 		}
 	}
 
+	/**
+	 * Prompt for customer name input string.
+	 *
+	 * @return the name input string
+	 */
 	public static String promptForCustomerNameInput(){
 		Scanner sc = new Scanner(System.in);
 		String input;
@@ -37,6 +50,11 @@ public class CustomerUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for no of pax input int. No of pax must be from 1 to 10.
+	 *
+	 * @return the no of pax input int
+	 */
 	public static int promptForNoOfPaxInput() {
 		Scanner sc = new Scanner(System.in);
 		int input;

@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
+/**
+ * The type Bill ui.
+ */
 public class BillUI{
+    /**
+     * Bill generator ui. Prompt for a Table ID with order created, Ask for customer's membership and generate bill.
+     *
+     * @param restaurant the restaurant
+     */
 	public static void billGenerator(Restaurant restaurant) {
 		Scanner sc = new Scanner(System.in);
         int tableID, membership;

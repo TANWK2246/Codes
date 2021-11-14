@@ -2,7 +2,15 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
+/**
+ * The type Order ui.
+ */
 public class OrderUI {
+    /**
+     * Order creator ui.
+     *
+     * @param restaurant the restaurant
+     */
     public static void orderCreator(Restaurant restaurant){
         int staffID, tableID, itemID, quantity;
         ArrayList<Integer> list1 = new ArrayList<>();
@@ -33,6 +41,11 @@ public class OrderUI {
         System.out.println("Order created!");
     }
 
+    /**
+     * Order viewer ui.
+     *
+     * @param restaurant the restaurant
+     */
     public static void orderViewer(Restaurant restaurant){
         Scanner sc = new Scanner(System.in);
         int tableID;
@@ -48,6 +61,11 @@ public class OrderUI {
         
     }
 
+    /**
+     * Order editor ui.
+     *
+     * @param restaurant the restaurant
+     */
     public static void orderEditor(Restaurant restaurant){
         Scanner sc = new Scanner(System.in);
 
@@ -108,6 +126,12 @@ public class OrderUI {
         }while(choice!=4);
     }
 
+    /**
+     * Prompt for staff id input int.
+     *
+     * @param staffArray the staff array
+     * @return the staff id input int
+     */
     public static int promptForStaffIDInput(StaffArray staffArray) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -127,6 +151,12 @@ public class OrderUI {
 		return input;
 	}
 
+    /**
+     * Prompt for with customer table id input int.
+     *
+     * @param tableArray the table array
+     * @return the table id input int
+     */
     public static int promptForWithCustomerTableIDInput(TableArray tableArray) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -149,6 +179,12 @@ public class OrderUI {
 		return input;
 	}
 
+    /**
+     * Prompt for with order table id input int.
+     *
+     * @param tableArray the table array
+     * @return the table id input int
+     */
     public static int promptForWithOrderTableIDInput(TableArray tableArray) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -178,6 +214,12 @@ public class OrderUI {
 		return input;
 	}
 
+    /**
+     * Prompt for menu item id input int.
+     *
+     * @param menu the menu
+     * @return the menu item id input int
+     */
     public static int promptForMenuItemIDInput(Menu menu) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -200,6 +242,12 @@ public class OrderUI {
 		return input;
 	}
 
+    /**
+     * Prompt for item order id input int.
+     *
+     * @param noOfItemOrder the number of item order
+     * @return the item order id input int
+     */
     public static int promptForItemOrderIDInput(int noOfItemOrder) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -218,6 +266,11 @@ public class OrderUI {
 		return input;
 	}
 
+    /**
+     * Prompt for quantity input. Quantity must be greater than zero.
+     *
+     * @return the quantity input int
+     */
     public static int promptForQuantityInput() {
 		Scanner sc = new Scanner(System.in);
 		int input;

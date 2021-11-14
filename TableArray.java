@@ -1,11 +1,23 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * The type Table array. It stores an array list which stores all the table objects.
+ */
 public class TableArray implements Serializable{
+    /**
+     * The Tables.
+     */
     private ArrayList<Table> tables = new ArrayList<Table>();
     
+    /**
+     * Instantiates a new Table array.
+     */
     public TableArray(){}
 
+    /**
+     * Load table.
+     */
     public void loadTable(){
         this.tables.add(new Table(this.tables.size(), 2));
         this.tables.add(new Table(this.tables.size(), 2));
@@ -19,10 +31,10 @@ public class TableArray implements Serializable{
         this.tables.add(new Table(this.tables.size(), 10));
     }
 
-    public Table getTable(int tableID){
-        return this.tables.get(tableID);
-    }
 
+    /**
+     * Show empty tables.
+     */
     public void showEmptyTables() {
         StringAlignUtils util = new StringAlignUtils(30, StringAlignUtils.Alignment.CENTER);
     	System.out.print( util.format("Empty Tables") );
@@ -41,10 +53,13 @@ public class TableArray implements Serializable{
         }
 	}
 
-    public int findAnEmptyTable(int noOfPax) {
-		for (Table i : this.tables) {
-            if(i.getTableCapacity() == noOfPax & i.getIsOccupied() == false) return i.getTableID();
-		}
-        return -1;
-	}
+	/**
+	 * Gets the array list of tables.
+	 *
+	 * @return the array list of tables.
+	 */
+    public ArrayList<Table> getTables(){
+        return this.tables;
+    }
+
 }

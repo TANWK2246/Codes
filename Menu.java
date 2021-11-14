@@ -1,12 +1,27 @@
 import java.util.ArrayList;
 import java.io.Serializable;
 
+/**
+ * The type Menu which stores an array list of all menu items.
+ */
 public class Menu implements Serializable {
+	/**
+	 * The Menu items.
+	 */
 	private ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+	/**
+	 * The No of ala carte items.
+	 */
 	private int noOfAlaCarteItems = 0;
 
+	/**
+	 * Instantiates a new Menu.
+	 */
 	public Menu(){}
 
+	/**
+	 * Load menu.
+	 */
 	public void loadMenu(){
 		menuItems.add(new AlaCarteItem("Chicken Chop", "chicken", 12.50, 1));noOfAlaCarteItems++;
 		menuItems.add(new AlaCarteItem("Fish and Chips", "fish & potato", 12.50, 1));noOfAlaCarteItems++;
@@ -32,6 +47,9 @@ public class Menu implements Serializable {
 		menuItems.add(newSetPackage);
 	}
 
+	/**
+	 * Display menu.
+	 */
 	public void displayMenu() {
 		StringAlignUtils util = new StringAlignUtils(80, StringAlignUtils.Alignment.CENTER);
     	System.out.println( util.format("Ala Carte Menu") );
@@ -42,6 +60,9 @@ public class Menu implements Serializable {
 		displaySetPackageMenu();
     }
 
+	/**
+	 * Display ala carte menu.
+	 */
 	public void displayAlaCarteMenu(){
 		String formatInfo = "%s\t%-20.20s %-30.30s %-9.9s\t\t%-10.10s\n";
 		System.out.format(formatInfo,"ID", "Name", "Description", "Price", "Type");
@@ -54,6 +75,9 @@ public class Menu implements Serializable {
 		}
 	}
 
+	/**
+	 * Display set package menu.
+	 */
 	public void displaySetPackageMenu(){
 		String formatInfo = "%s\t%-20.20s %-30.30s %-9.9s\t\n";
 		System.out.format(formatInfo,"ID", "Name", "Description", "Price");
@@ -66,34 +90,33 @@ public class Menu implements Serializable {
 		}
 	}
 
-	public MenuItem getItem(int itemID){
-		return menuItems.get(itemID);
-	}
-
-	public void addItem(AlaCarteItem menuItem){
-		menuItems.add(noOfAlaCarteItems, menuItem);
-		noOfAlaCarteItems++;
-	}
-
-	public void removeItem(AlaCarteItem menuItem){
-		menuItems.remove(menuItem);
-		noOfAlaCarteItems--;
-	}
-
-	public void addItem(SetPackage menuItem){
-		menuItems.add(menuItem);
-	}
-
-	public void removeItem(SetPackage menuItem){
-		menuItems.remove(menuItem);
-	}
-
+	/**
+	 * Gets the array list of menu items.
+	 *
+	 * @return the array list of menu items
+	 */
 	public ArrayList<MenuItem> getMenuItems() {
 		return this.menuItems;
 	}
 
+	
+	/**
+	 * Gets no of ala carte items.
+	 *
+	 * @return the no of ala carte items
+	 */
 	public int getNoOfAlaCarteItems() {
 		return this.noOfAlaCarteItems;
+	}
+
+	
+	/**
+	 * Sets no of ala carte items.
+	 *
+	 * @param noOfAlaCarteItems the no of ala carte items
+	 */
+	public void setNoOfAlaCarteItems(int noOfAlaCarteItems) {
+		this.noOfAlaCarteItems = noOfAlaCarteItems;
 	}
 
 }

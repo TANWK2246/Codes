@@ -2,8 +2,16 @@ import java.util.Scanner;
 import java.time.DateTimeException;
 import java.util.InputMismatchException;
 
+/**
+ * The type Reservation ui.
+ */
 public class ReservationUI{
 
+	/**
+	 * Reservation creator ui.
+	 *
+	 * @param restaurant the restaurant
+	 */
 	public static void reservationCreator(Restaurant restaurant){
 		Scanner sc = new Scanner(System.in);
 		int noOfPax, phone;
@@ -37,6 +45,11 @@ public class ReservationUI{
 		
 	}
 
+	/**
+	 * Reservation viewer ui.
+	 *
+	 * @param restaurant the restaurant
+	 */
 	public static void reservationViewer(Restaurant restaurant){
 		int reservationID;
 		Scanner sc = new Scanner(System.in);
@@ -53,13 +66,18 @@ public class ReservationUI{
 		}
 	}
 
+	/**
+	 * Reservation remover ui.
+	 *
+	 * @param restaurant the restaurant
+	 */
 	public static void reservationRemover(Restaurant restaurant){
 		int reservationID;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Remove Reservation");
 		reservationID = promptForReservationIDInput();
 
-		int result = ReservationManager.removeReservation(reservationID, restaurant);
+		int result = ReservationManager.removeReservation(reservationID, restaurant.getReservationArray(), restaurant.getTableArray());
 		if(result == -1){
 			System.out.println("This reservation had been removed.");
 		}else if(result == -2){
@@ -70,6 +88,11 @@ public class ReservationUI{
 		
 	}
 
+	/**
+	 * Prompt for check in time input string.
+	 *
+	 * @return the check in time input string
+	 */
 	public static String promptForCheckInTimeInput(){
 		Scanner sc = new Scanner(System.in);
 		String input;
@@ -92,6 +115,11 @@ public class ReservationUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for phone input int.
+	 *
+	 * @return the phone input int
+	 */
 	public static int promptForPhoneInput() {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -108,6 +136,11 @@ public class ReservationUI{
 		return input;
 	}
 
+	/**
+	 * Prompt for reservation id input int.
+	 *
+	 * @return the reservation id input int
+	 */
 	public static int promptForReservationIDInput() {
 		Scanner sc = new Scanner(System.in);
 		int input;
